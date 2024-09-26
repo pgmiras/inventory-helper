@@ -1,10 +1,9 @@
-# My Personal Project
+# Inventory
 
-## A subtitle
+## A helper for shoppers
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+This application records a user’s inventory (what they have in their, e.g., fridge, pantry, etc.) and allows the user to add or remove items from this inventory. This helps them take note of the items they have used up and might need to replace or replenish, and categorize these items, for the next time they will go to the store. Anyone who does groceries or goes shopping, such as college students and families, can use this application. As a grocery shopper myself (and a college student learning to be an independent adult), I thought it would be helpful to have an app to take inventory of what I have and what I used up, so I don’t forget what I need to buy when it’s time to do groceries.
 
-An example of text with **bold** and *italic* fonts.  
+Some example scenarios where this application would be useful:
+- I have two cartons of milk in the fridge. I used one carton this week, so I need to buy a carton of milk, which is in the dairy section of the grocery store.
+- I have three cans of tuna in the pantry. I used two cans this week, so I need to buy two cans of tuna, which is in the canned foods section of the grocery store.
