@@ -7,31 +7,33 @@ public class GroceryItem {
 
     // REQUIRES: name has non-zero length, quantity > 0, category has non-zero length
     // EFFECTS: constructs a grocery item with given name, quantity, and category
-    public GroceryItem(String n, int q, String c) {
-        // TODO GroceryItem constructor
+    public GroceryItem(String name, int quantity, String category) {
+        this.name = name;
+        this.quantity = quantity;
+        this.category = category;
     }
 
     public String getName(){
-        return ""; // TODO getName
+        return this.name;
     }
 
     public int getQuantity(){
-        return 0; // TODO getQuantity
+        return this.quantity;
     }
 
     public String getCategory(){
-        return ""; // TODO getCategory
+        return this.category;
     }
 
-    public void setName(){
-        // TODO setName
+    public void setName(String name){
+        this.name = name;
     }
 
-    public void setQuantity(){
-        // TODO setQuantity
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
     }
 
-    public void setCategory(){
-        // TODO setCategory
+    public void setCategory(String category){
+        this.category = category;
     }
 }
