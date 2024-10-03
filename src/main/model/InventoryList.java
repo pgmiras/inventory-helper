@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryList {
@@ -32,8 +33,13 @@ public class InventoryList {
 
     // REQUIRES: given grocery item is already in the list, and groceryItem.getQuantityInInventory() >= amount
     // MODIFIES: groceryItem
-    // EFFECTS: decreases groceryItem's quantity in inventory by given amount
+    // EFFECTS: decreases groceryItem's quantity in inventory by given amount;
+    // if groceryItem's new quantity is 0, remove this item from inventory
     public void dereaseItemQuantity(GroceryItem groceryItem, int amount){
         // TODO stub
+    }
+
+    public ArrayList<GroceryItem> getInventoryList() {
+        return null; // TODO stub
     }
 }
