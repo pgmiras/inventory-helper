@@ -6,12 +6,13 @@ public class GroceryItem {
     private int quantityInShoppingList;
     private String category;
 
-    // REQUIRES: name has non-zero length, quantityInInventory > 0 OR quantityInShoppingList > 0, category has non-zero length
-    // EFFECTS: constructs a grocery item with given name, quantity, and category
+    // REQUIRES: name has non-zero length, quantityInInventory > 0, category has non-zero length
+    // EFFECTS: constructs a new grocery item with given name, quantity in user's inventory, and category,
+    // and is NOT in user's shopping list
     public GroceryItem(String name, int quantityInInventory, int quantityInShoppingList, String category) {
         this.name = name;
         this.quantityInInventory = quantityInInventory;
-        this.quantityInShoppingList = quantityInShoppingList;
+        this.quantityInShoppingList = 0;
         this.category = category;
     }
 
