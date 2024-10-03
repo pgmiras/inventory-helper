@@ -2,7 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,58 +21,52 @@ public class InventoryListTest {
 
     @Test
     void testConstructor() {
-        ArrayList<GroceryItem> testInventoryList = testInventory.getInventoryList();
+        HashSet<GroceryItem> testInventoryList = testInventory.getInventoryList();
         assertEquals(0, testInventoryList.size());
     }
 
     @Test
     void testAddOneItem() {
-        ArrayList<GroceryItem> testInventoryList = testInventory.getInventoryList();
+        HashSet<GroceryItem> testInventoryList = testInventory.getInventoryList();
         testInventory.addItem(testGroceryItem1);
         assertEquals(1, testInventoryList.size());
-        assertEquals(testGroceryItem1, testInventoryList.get(0));
     }
 
     @Test
     void testAddMultipleDifferentItems() {
-        ArrayList<GroceryItem> testInventoryList = testInventory.getInventoryList();
+        HashSet<GroceryItem> testInventoryList = testInventory.getInventoryList();
         testInventory.addItem(testGroceryItem1);
         assertEquals(1, testInventoryList.size());
         testInventory.addItem(testGroceryItem2);
         assertEquals(2, testInventoryList.size());
-        assertEquals(testGroceryItem1, testInventoryList.get(0));
-        assertEquals(testGroceryItem2, testInventoryList.get(1));
     }    
 
     @Test
     void testAddSameItemMultipleTimes() {
-        ArrayList<GroceryItem> testInventoryList = testInventory.getInventoryList();
+        HashSet<GroceryItem> testInventoryList = testInventory.getInventoryList();
         testInventory.addItem(testGroceryItem1);
         assertEquals(1, testInventoryList.size());
         testInventory.addItem(testGroceryItem1);
         assertEquals(1, testInventoryList.size());
-        assertEquals(testGroceryItem1, testInventoryList.get(0));
     }    
 
     @Test
     void testRemoveOneItem() {
-        ArrayList<GroceryItem> testInventoryList = testInventory.getInventoryList();
+        HashSet<GroceryItem> testInventoryList = testInventory.getInventoryList();
         testInventory.addItem(testGroceryItem1);
         assertEquals(1, testInventoryList.size());
-        assertEquals(testGroceryItem1, testInventoryList.get(0));
         testInventory.removeItem(testGroceryItem1);
         assertEquals(0, testInventoryList.size());
     }
 
     @Test
     void testRemoveMultipleDifferentItems() {
-        ArrayList<GroceryItem> testInventoryList = testInventory.getInventoryList();
+        HashSet<GroceryItem> testInventoryList = testInventory.getInventoryList();
         testInventory.addItem(testGroceryItem1);
         testInventory.addItem(testGroceryItem2);
         assertEquals(2, testInventoryList.size());
         testInventory.removeItem(testGroceryItem1);
         assertEquals(1, testInventoryList.size());
-        assertEquals(testGroceryItem2, testInventoryList.get(0));
         testInventory.removeItem(testGroceryItem2);
         assertEquals(0, testInventoryList.size());
     }
@@ -92,7 +86,7 @@ public class InventoryListTest {
 
     @Test
     void testDecreaseItemQuantityAndRemoveItem() {
-        ArrayList<GroceryItem> testInventoryList = testInventory.getInventoryList();
+        HashSet<GroceryItem> testInventoryList = testInventory.getInventoryList();
         testInventory.increaseItemQuantity(testGroceryItem1, 3);
         testInventory.decreaseItemQuantity(testGroceryItem1, 3);
         assertEquals(0, testInventoryList.size());
