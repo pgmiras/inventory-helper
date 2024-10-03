@@ -10,13 +10,14 @@ public class GroceryItemTest {
 
     @BeforeEach
     void runBefore() {
-        testGroceryItem = new GroceryItem("milk", 1, "dairy");
+        testGroceryItem = new GroceryItem("milk", "dairy");
     }
 
     @Test
     void testConstructor() {
         assertEquals("milk", testGroceryItem.getName());
-        assertEquals(1, testGroceryItem.getQuantity());
+        assertEquals(0, testGroceryItem.getQuantityInInventory());
+        assertEquals(0, testGroceryItem.getQuantityInShoppingList());
         assertEquals("dairy", testGroceryItem.getCategory());
     }
 }
