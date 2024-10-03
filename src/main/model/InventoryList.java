@@ -24,14 +24,14 @@ public class InventoryList {
         // TODO stub
     }
 
-    // REQUIRES: given grocery item is already in the list
+    // REQUIRES: given grocery item is already in the list, amount > 0
     // MODIFIES: groceryItem
     // EFFECTS: increases groceryItem's quantity in inventory by given amount
     public void increaseItemQuantity(GroceryItem groceryItem, int amount){
         // TODO stub
     }
 
-    // REQUIRES: given grocery item is already in the list, and groceryItem.getQuantityInInventory() >= amount
+    // REQUIRES: given grocery item is already in the list, and groceryItem.getQuantityInInventory() >= amount > 0
     // MODIFIES: groceryItem
     // EFFECTS: decreases groceryItem's quantity in inventory by given amount;
     // if groceryItem's new quantity is 0, remove this item from inventory
