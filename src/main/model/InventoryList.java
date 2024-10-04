@@ -2,6 +2,7 @@ package model;
 
 import java.util.HashSet;
 
+// Represents user's inventory
 public class InventoryList {
     private HashSet<GroceryItem> inventory;
 

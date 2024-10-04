@@ -2,6 +2,7 @@ package model;
 
 import java.util.HashSet;
 
+// Represents user's shopping list
 public class ShoppingList {
     private HashSet<GroceryItem> shoppingList;
 

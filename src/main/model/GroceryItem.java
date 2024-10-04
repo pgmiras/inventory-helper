@@ -1,5 +1,7 @@
 package model;
 
+// Represents a grocery item describing its name, how many of it is in user's inventory,
+// how many of it is in user's shopping list, and its category
 public class GroceryItem {
     private String name;
     private int quantityInInventory;
