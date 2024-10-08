@@ -21,20 +21,20 @@ public class ShoppingListTest {
 
     @Test
     void testConstructor() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getShoppingList();
+        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
         assertEquals(0, testShoppingListList.size());
     }
 
     @Test
     void testAddOneItem() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getShoppingList();
+        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
         testShoppingList.addItem(testGroceryItem1);
         assertEquals(1, testShoppingListList.size());
     }
 
     @Test
     void testAddMultipleDifferentItems() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getShoppingList();
+        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
         testShoppingList.addItem(testGroceryItem1);
         assertEquals(1, testShoppingListList.size());
         testShoppingList.addItem(testGroceryItem2);
@@ -43,7 +43,7 @@ public class ShoppingListTest {
 
     @Test
     void testAddSameItemMultipleTimes() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getShoppingList();
+        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
         testShoppingList.addItem(testGroceryItem1);
         assertEquals(1, testShoppingListList.size());
         testShoppingList.addItem(testGroceryItem1);
@@ -52,7 +52,7 @@ public class ShoppingListTest {
 
     @Test
     void testRemoveOneItem() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getShoppingList();
+        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
         testShoppingList.addItem(testGroceryItem1);
         assertEquals(1, testShoppingListList.size());
         testShoppingList.removeItem(testGroceryItem1);
@@ -61,7 +61,7 @@ public class ShoppingListTest {
 
     @Test
     void testRemoveMultipleDifferentItems() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getShoppingList();
+        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
         testShoppingList.addItem(testGroceryItem1);
         testShoppingList.addItem(testGroceryItem2);
         assertEquals(2, testShoppingListList.size());
@@ -86,7 +86,7 @@ public class ShoppingListTest {
 
     @Test
     void testDecreaseItemQuantityAndRemoveItem() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getShoppingList();
+        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
         testShoppingList.increaseItemQuantity(testGroceryItem1, 3);
         testShoppingList.decreaseItemQuantity(testGroceryItem1, 3);
         assertEquals(0, testShoppingListList.size());
