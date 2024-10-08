@@ -22,13 +22,13 @@ public class GroceryItemTest {
     }
 
     @Test
-    public void testIncreaseQuantityInInventory(int amount){
+    void testIncreaseQuantityInInventory(){
         testGroceryItem.increaseQuantityInInventory(3);
         assertEquals(3, testGroceryItem.getQuantityInInventory());
     }
 
     @Test  
-    public void testDecreaseQuantityInInventoryList(int amount){
+    void testDecreaseQuantityInInventoryList(){
         testGroceryItem.increaseQuantityInInventory(5);
         assertEquals(5, testGroceryItem.getQuantityInInventory());
         testGroceryItem.decreaseQuantityInInventory(3);
@@ -36,13 +36,13 @@ public class GroceryItemTest {
     }
 
     @Test
-    public void testIncreaseQuantityInShoppingList(int amount){
+    void testIncreaseQuantityInShoppingList(){
         testGroceryItem.increaseQuantityInShoppingList(5);
         assertEquals(5, testGroceryItem.getQuantityInShoppingList());
     }
 
     @Test  
-    public void testDecreaseQuantityInShoppingList(int amount){
+    void testDecreaseQuantityInShoppingList(){
         testGroceryItem.increaseQuantityInShoppingList(6);
         assertEquals(6, testGroceryItem.getQuantityInShoppingList());
         testGroceryItem.decreaseQuantityInShoppingList(4);
