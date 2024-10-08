@@ -22,30 +22,28 @@ public class GroceryItem {
     // MODIFIES: this
     // EFFECTS: increases grocery item's quantity in inventory by given amount
     public void increaseQuantityInInventory(int amount){
-        // TODO
+        quantityInInventory += amount;
     }
 
     // REQUIRES: given grocery item is already in user's list, and getQuantityInInventory() >= amount > 0
     // MODIFIES: this
-    // EFFECTS: decreases grocery item's quantity in inventory by given amount;
-    // if grocery item's new quantity is 0, remove this item from inventory    
+    // EFFECTS: decreases grocery item's quantity in inventory by given amount; 
     public void decreaseQuantityInInventory(int amount){
-        // TODO
+        quantityInInventory -= amount;
     }
 
     // REQUIRES: given grocery item is already in user's inventory, amount > 0
     // MODIFIES: this
     // EFFECTS: increases grocery item's quantity in inventory by given amount
     public void increaseQuantityInShoppingList(int amount){
-        // TODO
+        quantityInShoppingList += amount;
     }
 
     // REQUIRES: given grocery item is already in user's list, and getQuantityInInventory() >= amount > 0
     // MODIFIES: this
-    // EFFECTS: decreases grocery item's quantity in inventory by given amount;
-    // if grocery item's new quantity is 0, remove this item from inventory    
+    // EFFECTS: decreases grocery item's quantity in inventory by given amount; 
     public void decreaseQuantityInShoppingList(int amount){
-        // TODO
+        quantityInShoppingList -= amount;
     }
 
     public String getName(){
