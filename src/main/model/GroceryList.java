@@ -23,6 +23,12 @@ public class GroceryList {
         groceryList.remove(groceryItem);
     }
 
+    // REQUIRES: given name is the name of an item that exists in the list
+    // EFFECTS: returns item with the given name
+    public GroceryItem getItem(String name){
+        return null; // TODO
+    }
+
     public HashSet<GroceryItem> getGroceryList() {
         return groceryList;
     }
