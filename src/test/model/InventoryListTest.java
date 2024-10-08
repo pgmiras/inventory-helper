@@ -1,5 +1,7 @@
 package model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,19 +15,9 @@ public class InventoryListTest extends GroceryListTest {
 
     @Test
     @Override
-    void testIncreaseItemQuantity() {
-        // TODO
-    }
-
-    @Test
-    @Override
-    void testDecreaseItemQuantity() {
-        // TODO
-    }
-
-    @Test
-    @Override
-    void testDecreaseItemQuantityAndRemoveItem() {
-        // TODO
+    void testGetItem(){
+        testGroceryList.addItem(testGroceryItem1);
+        testGroceryList.addItem(testGroceryItem2);
+        assertEquals(testGroceryItem1, testGroceryList.getItem(testGroceryItem1.getName()));
     }
 }

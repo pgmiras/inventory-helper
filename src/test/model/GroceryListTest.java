@@ -69,11 +69,6 @@ public abstract class GroceryListTest {
     }
 
     @Test
-    abstract void testIncreaseItemQuantity();
+    abstract void testGetItem();
 
-    @Test
-    abstract void testDecreaseItemQuantity();
-
-    @Test
-    abstract void testDecreaseItemQuantityAndRemoveItem();
 }
