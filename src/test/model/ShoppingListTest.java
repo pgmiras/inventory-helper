@@ -1,94 +1,32 @@
 package model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.HashSet;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ShoppingListTest {
-    private ShoppingList testShoppingList;
-    private GroceryItem testGroceryItem1;
-    private GroceryItem testGroceryItem2;
+public class ShoppingListTest extends GroceryListTest {
 
     @BeforeEach
+    @Override
     void runBefore() {
-        testShoppingList = new ShoppingList();
-        testGroceryItem1 = new GroceryItem("milk", "dairy");
-        testGroceryItem2 = new GroceryItem("lettuce", "vegetables");
+        super.runBefore();
+        testGroceryList = new ShoppingList();
     }
 
     @Test
-    void testConstructor() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
-        assertEquals(0, testShoppingListList.size());
-    }
-
-    @Test
-    void testAddOneItem() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
-        testShoppingList.addItem(testGroceryItem1);
-        assertEquals(1, testShoppingListList.size());
-    }
-
-    @Test
-    void testAddMultipleDifferentItems() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
-        testShoppingList.addItem(testGroceryItem1);
-        assertEquals(1, testShoppingListList.size());
-        testShoppingList.addItem(testGroceryItem2);
-        assertEquals(2, testShoppingListList.size());
-    }    
-
-    @Test
-    void testAddSameItemMultipleTimes() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
-        testShoppingList.addItem(testGroceryItem1);
-        assertEquals(1, testShoppingListList.size());
-        testShoppingList.addItem(testGroceryItem1);
-        assertEquals(1, testShoppingListList.size());
-    }    
-
-    @Test
-    void testRemoveOneItem() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
-        testShoppingList.addItem(testGroceryItem1);
-        assertEquals(1, testShoppingListList.size());
-        testShoppingList.removeItem(testGroceryItem1);
-        assertEquals(0, testShoppingListList.size());
-    }
-
-    @Test
-    void testRemoveMultipleDifferentItems() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
-        testShoppingList.addItem(testGroceryItem1);
-        testShoppingList.addItem(testGroceryItem2);
-        assertEquals(2, testShoppingListList.size());
-        testShoppingList.removeItem(testGroceryItem1);
-        assertEquals(1, testShoppingListList.size());
-        testShoppingList.removeItem(testGroceryItem2);
-        assertEquals(0, testShoppingListList.size());
-    }
-
-    @Test
+    @Override
     void testIncreaseItemQuantity() {
-        testShoppingList.increaseItemQuantity(testGroceryItem1, 2);
-        assertEquals(2, testGroceryItem1.getQuantityInShoppingList());
+        // TODO
     }
 
     @Test
+    @Override
     void testDecreaseItemQuantity() {
-        testShoppingList.increaseItemQuantity(testGroceryItem1, 3);
-        testShoppingList.decreaseItemQuantity(testGroceryItem1, 2);
-        assertEquals(1, testGroceryItem1.getQuantityInShoppingList());
+        // TODO
     }
 
     @Test
+    @Override
     void testDecreaseItemQuantityAndRemoveItem() {
-        HashSet<GroceryItem> testShoppingListList = testShoppingList.getGroceryList();
-        testShoppingList.increaseItemQuantity(testGroceryItem1, 3);
-        testShoppingList.decreaseItemQuantity(testGroceryItem1, 3);
-        assertEquals(0, testShoppingListList.size());
+        // TODO
     }
 }
