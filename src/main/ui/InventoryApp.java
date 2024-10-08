@@ -4,11 +4,12 @@ import java.util.Scanner;
 import java.util.HashSet;
 
 import model.GroceryItem;
-import model.InventoryList;
+import model.GroceryList;
 
 // Inventory application
 public class InventoryApp {
-    private InventoryList inventory = new InventoryList();
+    private GroceryList inventory = new GroceryList();
+    private GroceryList shoppingList = new GroceryList();
     private Scanner input = new Scanner(System.in);
 
     // EFFECTS: runs the inventory application
@@ -41,10 +42,12 @@ public class InventoryApp {
         System.out.println("Select from:");
         System.out.println("\ta -> View inventory");
         System.out.println("\tb -> Add to inventory");
-        System.out.println("\tc -> Modify items in inventory");
-        System.out.println("\td -> View shopping list");
-        System.out.println("\te -> Add to shopping list");
-        System.out.println("\tf -> Modify items in shopping list");
+        System.out.println("\tc -> Increase specific item in inventory");
+        System.out.println("\td -> Decrease specific item in inventory");
+        System.out.println("\te -> View shopping list");
+        System.out.println("\tf -> Add to shopping list");
+        System.out.println("\tg -> Increase specific item in shopping list");
+        System.out.println("\th -> Decrease specific item in shopping list");
         System.out.println("\tz -> Quit");
     }
 
@@ -56,13 +59,17 @@ public class InventoryApp {
             displayInventory();
         } else if (command.equals("b")) {
             addToInventory();
-        }
+        } 
+        // else if (command.equals("c")) {
+        //     increaseItemInInventory();
+        // }
+        
         // TODO add the other options
     }
 
     // EFFECTS: display user's inventory
     public void displayInventory() {
-        HashSet<GroceryItem> inventoryList = inventory.getInventoryList();
+        HashSet<GroceryItem> inventoryList = inventory.getGroceryList();
         if (inventoryList.size() == 0) {
             System.out.println("You do not have any items in your inventory.");
         } else {
@@ -73,7 +80,7 @@ public class InventoryApp {
         }
     }
 
-    // MODIFIES: this, inventory
+    // MODIFIES: this
     // EFFECTS: allows user to add items to inventory
     public void addToInventory() {
         System.out.println("Is this a new item? (y/n)");
@@ -86,17 +93,23 @@ public class InventoryApp {
             System.out.println("Enter quantity");
             int quantity = input.nextInt();
             GroceryItem groceryItem = new GroceryItem(name, category);
-            groceryItem.setQuantityInInventory(quantity);
+            groceryItem.increaseQuantityInInventory(quantity);
             inventory.addItem(groceryItem);
         } else {
-            System.out.println("Please select \'Modify items in inventory\' instead.");
+            System.out.println("Please select \'Increase/Decrease specific item in inventory\' instead.");
         }
     }
 
-    // MODIFIES: this, inventory
-    // EFFECTS: allows user to modify items already inside inventory
-    public void modifyInventory() {
-        // TODO
+    // REQUIRES: given grocery item must be in inventory
+    // MODIFIES: this, groceryItem
+    // EFFECTS: allows user to increase quantity of items already inside inventory
+    public void increaseItemInInventory() {
+        displayInventory();
+        System.out.println("Which of these items would you like to increase? Enter its name:");
+        String name = input.next();
+        System.out.println("How many of this item would you like to increase to your inventory?");
+        int amount = Integer.parseInt(input.next());
+        // TODO: increase quantity
     }
 
     // EFFECTS: display user's shopping list
@@ -110,9 +123,17 @@ public class InventoryApp {
         // TODO
     }
 
-    // MODIFIES: this, shopping
-    // EFFECTS: allows user to modify items already inside shopping list
-    public void modifyShoppingList() {
+    // REQUIRES: given grocery item must be in shopping list
+    // MODIFIES: this, groceryItem
+    // EFFECTS: allows user to increase quantity of items already inside shopping list
+    public void increaseItemInShoppingList() {
+        // TODO
+    }
+
+    // REQUIRES: given grocery item must be in shopping list
+    // MODIFIES: this, groceryItem
+    // EFFECTS: allows user to decrease quantity of items already inside shopping list
+    public void decreaseItemInShoppingList() {
         // TODO
     }
 }
