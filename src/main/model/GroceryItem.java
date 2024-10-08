@@ -29,7 +29,7 @@ public class GroceryItem {
     // MODIFIES: this
     // EFFECTS: decreases grocery item's quantity in inventory by given amount;
     // if grocery item's new quantity is 0, remove this item from inventory    
-    public void decreaseQuantityInInventoryList(int amount){
+    public void decreaseQuantityInInventory(int amount){
         // TODO
     }
 
