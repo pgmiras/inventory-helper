@@ -18,6 +18,36 @@ public class GroceryItem {
         this.category = category;
     }
 
+    // REQUIRES: given grocery item is already in user's inventory, amount > 0
+    // MODIFIES: this
+    // EFFECTS: increases grocery item's quantity in inventory by given amount
+    public void increaseQuantityInInventory(int amount){
+        // TODO
+    }
+
+    // REQUIRES: given grocery item is already in user's list, and getQuantityInInventory() >= amount > 0
+    // MODIFIES: this
+    // EFFECTS: decreases grocery item's quantity in inventory by given amount;
+    // if grocery item's new quantity is 0, remove this item from inventory    
+    public void decreaseQuantityInInventoryList(int amount){
+        // TODO
+    }
+
+    // REQUIRES: given grocery item is already in user's inventory, amount > 0
+    // MODIFIES: this
+    // EFFECTS: increases grocery item's quantity in inventory by given amount
+    public void increaseQuantityInShoppingList(int amount){
+        // TODO
+    }
+
+    // REQUIRES: given grocery item is already in user's list, and getQuantityInInventory() >= amount > 0
+    // MODIFIES: this
+    // EFFECTS: decreases grocery item's quantity in inventory by given amount;
+    // if grocery item's new quantity is 0, remove this item from inventory    
+    public void decreaseQuantityInShoppingList(int amount){
+        // TODO
+    }
+
     public String getName(){
         return this.name;
     }
@@ -36,14 +66,6 @@ public class GroceryItem {
 
     public void setName(String name){
         this.name = name;
-    }
-
-    public void setQuantityInInventory(int quantityInInventory){
-        this.quantityInInventory = quantityInInventory;
-    }
-
-    public void setQuantityInShoppingList(int quantityInShoppingList){
-        this.quantityInShoppingList = quantityInShoppingList;
     }
 
     public void setCategory(String category){
