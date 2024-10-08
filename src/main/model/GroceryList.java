@@ -2,7 +2,7 @@ package model;
 
 import java.util.HashSet;
 
-public class GroceryList {
+public abstract class GroceryList {
     protected HashSet<GroceryItem> groceryList;
 
     // EFFECTS: constructs a grocery list with no items
@@ -28,6 +28,17 @@ public class GroceryList {
     public GroceryItem getItem(String name){
         return null; // TODO
     }
+
+    // REQUIRES: given grocery item is already in the list, amount > 0
+    // MODIFIES: groceryItem
+    // EFFECTS: increases groceryItem's quantity in list by given amount
+    public abstract void increaseItemQuantity(GroceryItem groceryItem, int amount);
+
+    // REQUIRES: given grocery item is already in the list, and groceryItem.getQuantityInInventory() >= amount > 0
+    // MODIFIES: groceryItem
+    // EFFECTS: decreases groceryItem's quantity in list by given amount;
+    // if groceryItem's new quantity is 0, remove this item from list
+    public abstract void decreaseItemQuantity(GroceryItem groceryItem, int amount);
 
     public HashSet<GroceryItem> getGroceryList() {
         return groceryList;
