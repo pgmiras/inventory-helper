@@ -32,19 +32,29 @@ public class GroceryItem {
         quantityInInventory -= amount;
     }
 
-    // REQUIRES: given grocery item is already in user's inventory, amount > 0
+    // REQUIRES: given grocery item is already in user's shopping list, amount > 0
     // MODIFIES: this
-    // EFFECTS: increases grocery item's quantity in inventory by given amount
+    // EFFECTS: increases grocery item's quantity in shopping list by given amount
     public void increaseQuantityInShoppingList(int amount){
         quantityInShoppingList += amount;
     }
 
-    // REQUIRES: given grocery item is already in user's list, and getQuantityInInventory() >= amount > 0
+    // REQUIRES: given grocery item is already in user's shopping list, and getQuantityInShoppingList() >= amount > 0
     // MODIFIES: this
-    // EFFECTS: decreases grocery item's quantity in inventory by given amount; 
+    // EFFECTS: decreases grocery item's quantity in shopping by given amount
     public void decreaseQuantityInShoppingList(int amount){
         quantityInShoppingList -= amount;
     }
+
+    // EFFECTS: indicates if grocery item is contained in inventory list
+    public boolean isContainedInInventoryList() {
+        return false; // TODO
+    }
+
+    // EFFECTS: indicates if grocery item is contained in shopping list
+    public boolean isContainedInShoppingList() {
+        return false; // TODO
+    }    
 
     public String getName(){
         return this.name;
