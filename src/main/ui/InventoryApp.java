@@ -6,17 +6,22 @@ import java.util.HashSet;
 import model.GroceryItem;
 import model.GroceryList;
 
+// Used TellerApp as reference to structure this class and some methods
+// Repository URL: https://github.students.cs.ubc.ca/CPSC210/TellerApp
+
 // Inventory application
 public class InventoryApp {
     private GroceryList inventory = new GroceryList();
     private GroceryList shoppingList = new GroceryList();
     private Scanner input = new Scanner(System.in);
 
+    // Used TellerApp as reference (see repository URL above)
     // EFFECTS: runs the inventory application
     public InventoryApp() {
         runInventoryApp();
     }
 
+    // Used TellerApp as reference (see repository URL above)
     // MODIFIES: this
     // EFFECTS: processes user input
     public void runInventoryApp() {
@@ -34,9 +39,9 @@ public class InventoryApp {
         }
 
         System.out.println("Thanks for using the Inventory Application!");
-        // TODO
     }
 
+    // Used TellerApp as reference (see repository URL above)
     // EFFECTS: display menu of options to user
     public void displayMenu() {
         printDivider();
@@ -52,6 +57,7 @@ public class InventoryApp {
         System.out.println("\tz -> Quit");
     }
 
+    // Used TellerApp as reference (see repository URL above)
     // REQUIRES: command has non-zero length
     // MODIFIES: this
     // EFFECTS: processes user command
@@ -64,18 +70,15 @@ public class InventoryApp {
             increaseItemInInventory();
         } else if (command.equals("d")) {
             decreaseItemInInventory();
-        }   else if (command.equals("e")) {
+        } else if (command.equals("e")) {
             displayShoppingList();
-        }   else if (command.equals("f")) {
+        } else if (command.equals("f")) {
             addToShoppingList();
-        }   else if (command.equals("g")) {
+        } else if (command.equals("g")) {
             increaseItemInShoppingList();
-        }   else if (command.equals("h")) {
+        } else if (command.equals("h")) {
             decreaseItemInShoppingList();
         }
-
-        
-        // TODO add the other options
     }
 
     // EFFECTS: display user's inventory
@@ -87,7 +90,9 @@ public class InventoryApp {
         } else {
             System.out.println("You have the following in your inventory:");
             for (GroceryItem i : inventoryList) {
-                System.out.println("\t" + i.getQuantityInInventory() + " " + i.getName() + " (" + i.getCategory() + ")");
+                System.out.println("\t" + i.getQuantityInInventory() 
+                                + " " + i.getName() 
+                                + " (" + i.getCategory() + ")");
             }
         }
     }
@@ -135,10 +140,10 @@ public class InventoryApp {
         int amount = Integer.parseInt(input.next());
         GroceryItem groceryItem = inventory.getItem(name);
         groceryItem.decreaseQuantityInInventory(amount);
-        if(!groceryItem.isContainedInInventoryList()) {
+        if (!groceryItem.isContainedInInventoryList()) {
             inventory.removeItem(groceryItem);
         }
-    }    
+    }
 
     // EFFECTS: display user's shopping list
     public void displayShoppingList() {
@@ -149,7 +154,8 @@ public class InventoryApp {
         } else {
             System.out.println("You have the following in your shopping list:");
             for (GroceryItem i : shoppingListList) {
-                System.out.println("\t" + i.getQuantityInShoppingList() + " " + i.getName() + " (" + i.getCategory() + ")");
+                System.out.println(
+                        "\t" + i.getQuantityInShoppingList() + " " + i.getName() + " (" + i.getCategory() + ")");
             }
         }
     }
@@ -176,7 +182,8 @@ public class InventoryApp {
 
     // REQUIRES: given grocery item must be in shopping list
     // MODIFIES: this, groceryItem
-    // EFFECTS: allows user to increase quantity of items already inside shopping list
+    // EFFECTS: allows user to increase quantity of items already inside shopping
+    // list
     public void increaseItemInShoppingList() {
         displayShoppingList();
         System.out.println("Which of these items would you like to increase? Enter its name:");
@@ -188,7 +195,8 @@ public class InventoryApp {
 
     // REQUIRES: given grocery item must be in shopping list
     // MODIFIES: this, groceryItem
-    // EFFECTS: allows user to decrease quantity of items already inside shopping list
+    // EFFECTS: allows user to decrease quantity of items already inside shopping
+    // list
     public void decreaseItemInShoppingList() {
         displayShoppingList();
         System.out.println("Which of these items would you like to decrease? Enter its name:");
@@ -197,13 +205,14 @@ public class InventoryApp {
         int amount = Integer.parseInt(input.next());
         GroceryItem groceryItem = shoppingList.getItem(name);
         groceryItem.decreaseQuantityInShoppingList(amount);
-        if(!groceryItem.isContainedInShoppingList()) {
+        if (!groceryItem.isContainedInShoppingList()) {
             shoppingList.removeItem(groceryItem);
         }
     }
 
+    // Used TellerApp as reference (see repository URL above)
     // EFFECTS: prints divider
-    public void printDivider(){
+    public void printDivider() {
         System.out.println("-----------------------------------------");
     }
 }
