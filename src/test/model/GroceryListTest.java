@@ -7,7 +7,7 @@ import java.util.HashSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public abstract class GroceryListTest {
+public class GroceryListTest {
     protected GroceryList testGroceryList;
     protected GroceryItem testGroceryItem1;
     protected GroceryItem testGroceryItem2;
@@ -16,6 +16,7 @@ public abstract class GroceryListTest {
     void runBefore() {
         testGroceryItem1 = new GroceryItem("milk", "dairy");
         testGroceryItem2 = new GroceryItem("lettuce", "vegetables");
+        testGroceryList = new GroceryList();
     }
 
     @Test
@@ -69,6 +70,10 @@ public abstract class GroceryListTest {
     }
 
     @Test
-    abstract void testGetItem();
+    void testGetItem(){
+        testGroceryList.addItem(testGroceryItem1);
+        testGroceryList.addItem(testGroceryItem2);
+        assertEquals(testGroceryItem1, testGroceryList.getItem(testGroceryItem1.getName()));
+    }
 
 }
