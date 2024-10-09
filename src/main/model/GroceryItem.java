@@ -48,12 +48,20 @@ public class GroceryItem {
 
     // EFFECTS: indicates if grocery item is contained in inventory list
     public boolean isContainedInInventoryList() {
-        return false; // TODO
+        if (quantityInInventory > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // EFFECTS: indicates if grocery item is contained in shopping list
     public boolean isContainedInShoppingList() {
-        return false; // TODO
+        if (quantityInShoppingList > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }    
 
     public String getName(){
