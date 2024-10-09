@@ -25,7 +25,7 @@ public class GroceryList {
 
     // REQUIRES: given name is the name of an item that exists in the list
     // EFFECTS: returns item with the given name
-    public GroceryItem getItem(String name){
+    public GroceryItem getItem(String name) {
         for (GroceryItem groceryItem : groceryList) {
             if (name.equals(groceryItem.getName())) {
                 return groceryItem;

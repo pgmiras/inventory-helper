@@ -21,28 +21,30 @@ public class GroceryItem {
     // REQUIRES: given grocery item is already in user's inventory, amount > 0
     // MODIFIES: this
     // EFFECTS: increases grocery item's quantity in inventory by given amount
-    public void increaseQuantityInInventory(int amount){
+    public void increaseQuantityInInventory(int amount) {
         quantityInInventory += amount;
     }
 
-    // REQUIRES: given grocery item is already in user's list, and getQuantityInInventory() >= amount > 0
+    // REQUIRES: given grocery item is already in user's list, and
+    // getQuantityInInventory() >= amount > 0
     // MODIFIES: this
-    // EFFECTS: decreases grocery item's quantity in inventory by given amount; 
-    public void decreaseQuantityInInventory(int amount){
+    // EFFECTS: decreases grocery item's quantity in inventory by given amount;
+    public void decreaseQuantityInInventory(int amount) {
         quantityInInventory -= amount;
     }
 
     // REQUIRES: given grocery item is already in user's shopping list, amount > 0
     // MODIFIES: this
     // EFFECTS: increases grocery item's quantity in shopping list by given amount
-    public void increaseQuantityInShoppingList(int amount){
+    public void increaseQuantityInShoppingList(int amount) {
         quantityInShoppingList += amount;
     }
 
-    // REQUIRES: given grocery item is already in user's shopping list, and getQuantityInShoppingList() >= amount > 0
+    // REQUIRES: given grocery item is already in user's shopping list, and
+    // getQuantityInShoppingList() >= amount > 0
     // MODIFIES: this
     // EFFECTS: decreases grocery item's quantity in shopping by given amount
-    public void decreaseQuantityInShoppingList(int amount){
+    public void decreaseQuantityInShoppingList(int amount) {
         quantityInShoppingList -= amount;
     }
 
@@ -62,21 +64,21 @@ public class GroceryItem {
         } else {
             return false;
         }
-    }    
+    }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getQuantityInInventory(){
+    public int getQuantityInInventory() {
         return this.quantityInInventory;
     }
 
-    public int getQuantityInShoppingList(){
+    public int getQuantityInShoppingList() {
         return this.quantityInShoppingList;
     }
 
-    public String getCategory(){
+    public String getCategory() {
         return this.category;
     }
 }
