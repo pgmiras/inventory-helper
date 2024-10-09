@@ -76,4 +76,10 @@ public class GroceryListTest {
         assertEquals(testGroceryItem1, testGroceryList.getItem(testGroceryItem1.getName()));
     }
 
+    @Test
+    void testGetItemNotInList() {
+        testGroceryList.addItem(testGroceryItem2);
+        assertEquals(null, testGroceryList.getItem(testGroceryItem1.getName()));        
+    }
+
 }

@@ -28,7 +28,7 @@ public class GroceryList {
     public GroceryItem getItem(String name){
         for (GroceryItem groceryItem : groceryList) {
             if (name.equals(groceryItem.getName())) {
-                    return groceryItem;
+                return groceryItem;
             }
         }
         return null;
