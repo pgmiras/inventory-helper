@@ -39,6 +39,7 @@ public class InventoryApp {
 
     // EFFECTS: display menu of options to user
     public void displayMenu() {
+        printDivider();
         System.out.println("Select from:");
         System.out.println("\ta -> View inventory");
         System.out.println("\tb -> Add to inventory");
@@ -59,23 +60,34 @@ public class InventoryApp {
             displayInventory();
         } else if (command.equals("b")) {
             addToInventory();
-        } 
-        // else if (command.equals("c")) {
-        //     increaseItemInInventory();
-        // }
+        } else if (command.equals("c")) {
+            increaseItemInInventory();
+        } else if (command.equals("d")) {
+            decreaseItemInInventory();
+        }   else if (command.equals("e")) {
+            displayShoppingList();
+        }   else if (command.equals("f")) {
+            addToShoppingList();
+        }   else if (command.equals("g")) {
+            increaseItemInShoppingList();
+        }   else if (command.equals("h")) {
+            decreaseItemInShoppingList();
+        }
+
         
         // TODO add the other options
     }
 
     // EFFECTS: display user's inventory
     public void displayInventory() {
+        printDivider();
         HashSet<GroceryItem> inventoryList = inventory.getGroceryList();
         if (inventoryList.size() == 0) {
             System.out.println("You do not have any items in your inventory.");
         } else {
             System.out.println("You have the following in your inventory:");
             for (GroceryItem i : inventoryList) {
-                System.out.println("\t" + i.getQuantityInInventory() + " " + i.getName());
+                System.out.println("\t" + i.getQuantityInInventory() + " " + i.getName() + " (" + i.getCategory() + ")");
             }
         }
     }
@@ -90,7 +102,7 @@ public class InventoryApp {
             String name = input.next();
             System.out.println("Enter its category:");
             String category = input.next();
-            System.out.println("Enter quantity");
+            System.out.println("Enter quantity:");
             int quantity = input.nextInt();
             GroceryItem groceryItem = new GroceryItem(name, category);
             groceryItem.increaseQuantityInInventory(quantity);
@@ -109,31 +121,89 @@ public class InventoryApp {
         String name = input.next();
         System.out.println("How many of this item would you like to increase to your inventory?");
         int amount = Integer.parseInt(input.next());
-        // TODO: increase quantity
+        inventory.getItem(name).increaseQuantityInInventory(amount);
     }
+
+    // REQUIRES: given grocery item must be in inventory
+    // MODIFIES: this, groceryItem
+    // EFFECTS: allows user to increase quantity of items already inside inventory
+    public void decreaseItemInInventory() {
+        displayInventory();
+        System.out.println("Which of these items would you like to decrease? Enter its name:");
+        String name = input.next();
+        System.out.println("How many of this item would you like to decrease from your inventory?");
+        int amount = Integer.parseInt(input.next());
+        GroceryItem groceryItem = inventory.getItem(name);
+        groceryItem.decreaseQuantityInInventory(amount);
+        if(!groceryItem.isContainedInInventoryList()) {
+            inventory.removeItem(groceryItem);
+        }
+    }    
 
     // EFFECTS: display user's shopping list
     public void displayShoppingList() {
-        // TODO
+        printDivider();
+        HashSet<GroceryItem> shoppingListList = shoppingList.getGroceryList();
+        if (shoppingListList.size() == 0) {
+            System.out.println("You do not have any items in your shopping list.");
+        } else {
+            System.out.println("You have the following in your shopping list:");
+            for (GroceryItem i : shoppingListList) {
+                System.out.println("\t" + i.getQuantityInShoppingList() + " " + i.getName() + " (" + i.getCategory() + ")");
+            }
+        }
     }
 
     // MODIFIES: this, shopping
-    // EFFECTS: allows user to add items to inventory
+    // EFFECTS: allows user to add items to shopping list
     public void addToShoppingList() {
-        // TODO
+        System.out.println("Is this a new item? (y/n)");
+        String userInput = input.next();
+        if (userInput.equals("y")) {
+            System.out.println("Enter the name of the item you want to add to your shopping list:");
+            String name = input.next();
+            System.out.println("Enter its category:");
+            String category = input.next();
+            System.out.println("Enter quantity:");
+            int quantity = input.nextInt();
+            GroceryItem groceryItem = new GroceryItem(name, category);
+            groceryItem.increaseQuantityInShoppingList(quantity);
+            shoppingList.addItem(groceryItem);
+        } else {
+            System.out.println("Please select \'Increase/Decrease specific item in shopping list\' instead.");
+        }
     }
 
     // REQUIRES: given grocery item must be in shopping list
     // MODIFIES: this, groceryItem
     // EFFECTS: allows user to increase quantity of items already inside shopping list
     public void increaseItemInShoppingList() {
-        // TODO
+        displayShoppingList();
+        System.out.println("Which of these items would you like to increase? Enter its name:");
+        String name = input.next();
+        System.out.println("How many of this item would you like to increase to your shopping list?");
+        int amount = Integer.parseInt(input.next());
+        shoppingList.getItem(name).increaseQuantityInShoppingList(amount);
     }
 
     // REQUIRES: given grocery item must be in shopping list
     // MODIFIES: this, groceryItem
     // EFFECTS: allows user to decrease quantity of items already inside shopping list
     public void decreaseItemInShoppingList() {
-        // TODO
+        displayShoppingList();
+        System.out.println("Which of these items would you like to decrease? Enter its name:");
+        String name = input.next();
+        System.out.println("How many of this item would you like to decrease from your shopping list?");
+        int amount = Integer.parseInt(input.next());
+        GroceryItem groceryItem = shoppingList.getItem(name);
+        groceryItem.decreaseQuantityInShoppingList(amount);
+        if(!groceryItem.isContainedInShoppingList()) {
+            shoppingList.removeItem(groceryItem);
+        }
+    }
+
+    // EFFECTS: prints divider
+    public void printDivider(){
+        System.out.println("-----------------------------------------");
     }
 }
