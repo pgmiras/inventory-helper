@@ -1,6 +1,8 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,4 +50,30 @@ public class GroceryItemTest {
         testGroceryItem.decreaseQuantityInShoppingList(4);
         assertEquals(2, testGroceryItem.getQuantityInShoppingList());
     }
+
+    @Test
+    void testItemIsInInventory() {
+        testGroceryItem.increaseQuantityInInventory(5);
+        assertEquals(5, testGroceryItem.getQuantityInInventory());
+        assertTrue(testGroceryItem.isContainedInInventoryList());
+    }
+
+    @Test
+    void testItemIsNotInInventory() {
+        assertEquals(0, testGroceryItem.getQuantityInInventory());
+        assertFalse(testGroceryItem.isContainedInInventoryList());
+    }
+
+    @Test
+    void testItemIsInShoppingList() {
+        testGroceryItem.increaseQuantityInShoppingList(4);
+        assertEquals(4, testGroceryItem.getQuantityInShoppingList());
+        assertTrue(testGroceryItem.isContainedInShoppingList());
+    }
+
+    @Test
+    void testItemIsNotInShoppingList() {
+        assertEquals(0, testGroceryItem.getQuantityInShoppingList());
+        assertFalse(testGroceryItem.isContainedInShoppingList());
+    }    
 }
