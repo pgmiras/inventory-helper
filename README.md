@@ -19,3 +19,5 @@ Some example scenarios where this application would be useful:
 - As a user, I want to be able to view the list of grocery items in my shopping list.
 - As a user, I want to be able to modify a grocery item's quantity in my shopping list.
 - As a user, I want to be able to remove a grocery item from my shopping list.
+- As a user, I want to be able to save my grocery lists (inventory and shopping list) to file whenever I want.
+- As a user, I want to be able to load my grocery lists (inventory and shopping list) from file whenever I want.
