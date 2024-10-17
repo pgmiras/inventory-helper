@@ -236,16 +236,18 @@ public class InventoryApp {
         }
     }
 
-    // Used JsonSerializationDemo as reference (see repository URL above)    
+    // Used JsonSerializationDemo as reference (see repository URL above)   
+    // REQUIRES: listType is either "inventory" or "shopping" 
     // EFFECTS: saves the grocery list to file
-    private void saveGroceryList() {
+    private void saveGroceryList(String listType) {
         // TODO
     }
 
-    // Used JsonSerializationDemo as reference (see repository URL above)    
+    // Used JsonSerializationDemo as reference (see repository URL above)
+    // REQUIRES: listType is either "inventory" or "shopping"
     // MODIFIES: this
     // EFFECTS: loads grocery list from file
-    private void loadGroceryList() {
+    private void loadGroceryList(String listType) {
         // TODO
     }
 
