@@ -18,10 +18,13 @@ import persistence.JsonWriter;
 
 // Inventory application
 public class InventoryApp {
-    private static final String JSON_STORE = "./data/grocerylist.json";
+    private static final String JSON_STORE_INVENTORY = "./data/inventory.json";
+    private static final String JSON_STORE_SHOPPING = "./data/shoppinglist.json";
     private Scanner input;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private JsonWriter jsonWriterInventory;
+    private JsonReader jsonReaderInventory;
+    private JsonWriter jsonWriterShopping;
+    private JsonReader jsonReaderShopping;
     private GroceryList inventory;
     private GroceryList shoppingList;
 
@@ -29,8 +32,10 @@ public class InventoryApp {
     // EFFECTS: runs the inventory application
     public InventoryApp() throws FileNotFoundException {
         input = new Scanner(System.in);
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriterInventory = new JsonWriter(JSON_STORE_INVENTORY);
+        jsonReaderInventory = new JsonReader(JSON_STORE_INVENTORY);
+        jsonWriterShopping = new JsonWriter(JSON_STORE_SHOPPING);
+        jsonReaderShopping = new JsonReader(JSON_STORE_SHOPPING);
         inventory = new GroceryList();
         shoppingList = new GroceryList();
         runInventoryApp();
