@@ -1,26 +1,40 @@
 package ui;
 
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashSet;
 
 import model.GroceryItem;
 import model.GroceryList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 // Used TellerApp as reference to structure this class and some methods
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/TellerApp
 
+// Used JsonSerializationDemo as reference to structure this class and some methods
+// Repository URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 // Inventory application
 public class InventoryApp {
-    private GroceryList inventory = new GroceryList();
-    private GroceryList shoppingList = new GroceryList();
-    private Scanner input = new Scanner(System.in);
+    private static final String JSON_STORE = "./data/grocerylist.json";
+    private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private GroceryList inventory;
+    private GroceryList shoppingList;
 
     // Used TellerApp as reference (see repository URL above)
     // EFFECTS: runs the inventory application
-    public InventoryApp() {
+    public InventoryApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+        inventory = new GroceryList();
+        shoppingList = new GroceryList();
         runInventoryApp();
     }
-
     // Used TellerApp as reference (see repository URL above)
     // MODIFIES: this
     // EFFECTS: processes user input
@@ -54,6 +68,10 @@ public class InventoryApp {
         System.out.println("\tf -> Add to shopping list");
         System.out.println("\tg -> Increase specific item in shopping list");
         System.out.println("\th -> Decrease specific item in shopping list");
+        System.out.println("\tsi -> Save inventory to file");
+        System.out.println("\tli -> Load inventory from file");
+        System.out.println("\tss -> Save shopping list to file");
+        System.out.println("\tls -> Load shopping list from file");
         System.out.println("\tz -> Quit");
     }
 
@@ -78,6 +96,14 @@ public class InventoryApp {
             increaseItemInShoppingList();
         } else if (command.equals("h")) {
             decreaseItemInShoppingList();
+        } else if (command.equals("si")) {
+            // TODO
+        } else if (command.equals("li")) {
+            // TODO
+        } else if (command.equals("ss")) {
+            // TODO
+        } else if (command.equals("ls")) {
+            // TODO
         }
     }
 
@@ -208,6 +234,19 @@ public class InventoryApp {
         if (!groceryItem.isContainedInShoppingList()) {
             shoppingList.removeItem(groceryItem);
         }
+    }
+
+    // Used JsonSerializationDemo as reference (see repository URL above)    
+    // EFFECTS: saves the grocery list to file
+    private void saveGroceryList() {
+        // TODO
+    }
+
+    // Used JsonSerializationDemo as reference (see repository URL above)    
+    // MODIFIES: this
+    // EFFECTS: loads grocery list from file
+    private void loadGroceryList() {
+        // TODO
     }
 
     // Used TellerApp as reference (see repository URL above)
