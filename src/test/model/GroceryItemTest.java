@@ -24,6 +24,15 @@ public class GroceryItemTest {
     }
 
     @Test
+    void testSecondConstructor() {
+        GroceryItem candy = new GroceryItem("chocolate", 3, 2, "candy");
+        assertEquals("chocolate", candy.getName());
+        assertEquals(3, candy.getQuantityInInventory());
+        assertEquals(2, candy.getQuantityInShoppingList());
+        assertEquals("candy", candy.getCategory());
+    }
+
+    @Test
     void testIncreaseQuantityInInventory(){
         testGroceryItem.increaseQuantityInInventory(3);
         assertEquals(3, testGroceryItem.getQuantityInInventory());
