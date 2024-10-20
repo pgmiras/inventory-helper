@@ -1,8 +1,15 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+// Used JsonSerializationDemo as reference to structure some methods
+// Repository URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 // Represents a grocery item describing its name, how many of it is in user's inventory,
 // how many of it is in user's shopping list, and its category
-public class GroceryItem {
+public class GroceryItem implements Writable {
     private String name;
     private int quantityInInventory;
     private int quantityInShoppingList;
@@ -91,5 +98,16 @@ public class GroceryItem {
 
     public String getCategory() {
         return this.category;
+    }
+
+    // Used JsonSerializationDemo as reference (see URL above)
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("quantityInInventory", quantityInInventory);
+        json.put("quantityInShoppingList", quantityInShoppingList);
+        json.put("category", category);
+        return json;
     }
 }
