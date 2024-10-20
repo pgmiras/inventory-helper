@@ -18,6 +18,14 @@ public class GroceryItem {
         this.category = category;
     }
 
+    // REQUIRES: name and category have non-zero length, 
+    //           quantity in inventory OR in shopping list are > 0
+    // EFFECTS: constructs a new grocery item with given name, category,
+    // quantity in inventory and/or shopping list
+    public GroceryItem(String name, int quantityInInventory, int quantityInShoppingList, String category) {
+        // TODO
+    }
+
     // REQUIRES: given grocery item is already in user's inventory, amount > 0
     // MODIFIES: this
     // EFFECTS: increases grocery item's quantity in inventory by given amount
