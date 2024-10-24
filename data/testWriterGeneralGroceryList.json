@@ -1,14 +1,14 @@
 {"groceryList": [
     {
-        "quantityInInventory": 1,
-        "quantityInShoppingList": 0,
-        "name": "saw",
-        "category": "tools"
-    },
-    {
         "quantityInInventory": 3,
         "quantityInShoppingList": 2,
         "name": "cabbage",
         "category": "vegetables"
+    },
+    {
+        "quantityInInventory": 1,
+        "quantityInShoppingList": 0,
+        "name": "saw",
+        "category": "tools"
     }
 ]}

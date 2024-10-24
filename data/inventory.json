@@ -1,0 +1,6 @@
+{"groceryList": [{
+    "quantityInInventory": 3,
+    "quantityInShoppingList": 0,
+    "name": "milk",
+    "category": "dairy"
+}]}

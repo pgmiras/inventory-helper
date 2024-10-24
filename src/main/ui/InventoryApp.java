@@ -102,13 +102,13 @@ public class InventoryApp {
         } else if (command.equals("h")) {
             decreaseItemInShoppingList();
         } else if (command.equals("si")) {
-            // TODO
+            saveGroceryList("inventory");
         } else if (command.equals("li")) {
-            // TODO
+            loadGroceryList("inventory");
         } else if (command.equals("ss")) {
-            // TODO
+            saveGroceryList("shopping list");
         } else if (command.equals("ls")) {
-            // TODO
+            loadGroceryList("shopping list");
         }
     }
 
@@ -242,18 +242,57 @@ public class InventoryApp {
     }
 
     // Used JsonSerializationDemo as reference (see repository URL above)   
-    // REQUIRES: listType is either "inventory" or "shopping" 
+    // REQUIRES: listType is either "inventory" or "shopping list" 
     // EFFECTS: saves the grocery list to file
     private void saveGroceryList(String listType) {
-        // TODO
+        JsonWriter jsonWriter = new JsonWriter("");
+        String JSON_STORE = "";
+        GroceryList gl = new GroceryList();
+        if (listType.equals("inventory")) {
+            jsonWriter = jsonWriterInventory;
+            JSON_STORE = JSON_STORE_INVENTORY;
+            gl = inventory;
+        } else if (listType.equals("shopping list")) {
+            jsonWriter = jsonWriterShopping;
+            JSON_STORE = JSON_STORE_SHOPPING;
+            gl = shoppingList;
+        }
+        try {
+            jsonWriter.open();
+            jsonWriter.write(gl);
+            jsonWriter.close();
+            System.out.println("Saved your " + listType + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
     // Used JsonSerializationDemo as reference (see repository URL above)
-    // REQUIRES: listType is either "inventory" or "shopping"
+    // REQUIRES: listType is either "inventory" or "shopping list"
     // MODIFIES: this
     // EFFECTS: loads grocery list from file
     private void loadGroceryList(String listType) {
-        // TODO
+        JsonReader jsonReader = new JsonReader("");
+        String JSON_STORE = "";
+        if (listType.equals("inventory")) {
+            jsonReader = jsonReaderInventory;
+            JSON_STORE = JSON_STORE_INVENTORY;
+            // gl = inventory;
+        } else if (listType.equals("shopping list")) {
+            jsonReader = jsonReaderShopping;
+            JSON_STORE = JSON_STORE_SHOPPING;
+            // gl = shoppingList;
+        }
+        try {
+            if (listType.equals("inventory")) {
+                inventory = jsonReader.read();
+            } else if (listType.equals("shopping list")) {
+                shoppingList = jsonReader.read();
+            }
+            System.out.println("Loaded your " + listType + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     // Used TellerApp as reference (see repository URL above)
