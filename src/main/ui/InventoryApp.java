@@ -40,6 +40,7 @@ public class InventoryApp {
         shoppingList = new GroceryList();
         runInventoryApp();
     }
+
     // Used TellerApp as reference (see repository URL above)
     // MODIFIES: this
     // EFFECTS: processes user input
@@ -53,7 +54,7 @@ public class InventoryApp {
             if (command.equals("z")) {
                 keepGoing = false;
             } else {
-                processCommand(command);
+                processGeneralCommand(command);
             }
         }
 
@@ -84,7 +85,31 @@ public class InventoryApp {
     // REQUIRES: command has non-zero length
     // MODIFIES: this
     // EFFECTS: processes user command
-    public void processCommand(String command) {
+    public void processGeneralCommand(String command) {
+        switch (command) {
+            case "a":
+            case "b":
+            case "c":
+            case "d":
+            case "si":
+            case "li":
+                processInventoryCommand(command);
+                break;
+            case "e":
+            case "f":
+            case "g":
+            case "h":
+            case "ss":
+            case "ls":
+                processShoppingListCommand(command);
+                break;
+        }
+    }
+
+    // REQUIRES: command has non-zero length
+    // MODIFIES: this
+    // EFFECTS: processes user command for inventory
+    public void processInventoryCommand(String command) {
         if (command.equals("a")) {
             displayInventory();
         } else if (command.equals("b")) {
@@ -93,7 +118,18 @@ public class InventoryApp {
             increaseItemInInventory();
         } else if (command.equals("d")) {
             decreaseItemInInventory();
-        } else if (command.equals("e")) {
+        } else if (command.equals("si")) {
+            saveGroceryList("inventory");
+        } else if (command.equals("li")) {
+            loadGroceryList("inventory");
+        } 
+    }
+
+    // REQUIRES: command has non-zero length
+    // MODIFIES: this
+    // EFFECTS: processes user command for shopping list
+    public void processShoppingListCommand(String command) {
+        if (command.equals("e")) {
             displayShoppingList();
         } else if (command.equals("f")) {
             addToShoppingList();
@@ -101,10 +137,6 @@ public class InventoryApp {
             increaseItemInShoppingList();
         } else if (command.equals("h")) {
             decreaseItemInShoppingList();
-        } else if (command.equals("si")) {
-            saveGroceryList("inventory");
-        } else if (command.equals("li")) {
-            loadGroceryList("inventory");
         } else if (command.equals("ss")) {
             saveGroceryList("shopping list");
         } else if (command.equals("ls")) {
@@ -121,9 +153,9 @@ public class InventoryApp {
         } else {
             System.out.println("You have the following in your inventory:");
             for (GroceryItem i : inventoryList) {
-                System.out.println("\t" + i.getQuantityInInventory() 
-                                + " " + i.getName() 
-                                + " (" + i.getCategory() + ")");
+                System.out.println("\t" + i.getQuantityInInventory()
+                        + " " + i.getName()
+                        + " (" + i.getCategory() + ")");
             }
         }
     }
@@ -241,29 +273,29 @@ public class InventoryApp {
         }
     }
 
-    // Used JsonSerializationDemo as reference (see repository URL above)   
-    // REQUIRES: listType is either "inventory" or "shopping list" 
+    // Used JsonSerializationDemo as reference (see repository URL above)
+    // REQUIRES: listType is either "inventory" or "shopping list"
     // EFFECTS: saves the grocery list to file
     private void saveGroceryList(String listType) {
         JsonWriter jsonWriter = new JsonWriter("");
-        String JSON_STORE = "";
+        String jsonStore = "";
         GroceryList gl = new GroceryList();
         if (listType.equals("inventory")) {
             jsonWriter = jsonWriterInventory;
-            JSON_STORE = JSON_STORE_INVENTORY;
+            jsonStore = JSON_STORE_INVENTORY;
             gl = inventory;
         } else if (listType.equals("shopping list")) {
             jsonWriter = jsonWriterShopping;
-            JSON_STORE = JSON_STORE_SHOPPING;
+            jsonStore = JSON_STORE_SHOPPING;
             gl = shoppingList;
         }
         try {
             jsonWriter.open();
             jsonWriter.write(gl);
             jsonWriter.close();
-            System.out.println("Saved your " + listType + " to " + JSON_STORE);
+            System.out.println("Saved your " + listType + " to " + jsonStore);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            System.out.println("Unable to write to file: " + jsonStore);
         }
     }
 
@@ -273,25 +305,20 @@ public class InventoryApp {
     // EFFECTS: loads grocery list from file
     private void loadGroceryList(String listType) {
         JsonReader jsonReader = new JsonReader("");
-        String JSON_STORE = "";
-        if (listType.equals("inventory")) {
-            jsonReader = jsonReaderInventory;
-            JSON_STORE = JSON_STORE_INVENTORY;
-            // gl = inventory;
-        } else if (listType.equals("shopping list")) {
-            jsonReader = jsonReaderShopping;
-            JSON_STORE = JSON_STORE_SHOPPING;
-            // gl = shoppingList;
-        }
+        String jsonStore = "";
         try {
             if (listType.equals("inventory")) {
+                jsonReader = jsonReaderInventory;
+                jsonStore = JSON_STORE_INVENTORY;
                 inventory = jsonReader.read();
             } else if (listType.equals("shopping list")) {
+                jsonReader = jsonReaderShopping;
+                jsonStore = JSON_STORE_SHOPPING;
                 shoppingList = jsonReader.read();
             }
-            System.out.println("Loaded your " + listType + " from " + JSON_STORE);
+            System.out.println("Loaded your " + listType + " from " + jsonStore);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            System.out.println("Unable to read from file: " + jsonStore);
         }
     }
 
