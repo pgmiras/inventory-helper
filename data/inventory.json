@@ -1,6 +1,14 @@
-{"groceryList": [{
-    "quantityInInventory": 3,
-    "quantityInShoppingList": 0,
-    "name": "milk",
-    "category": "dairy"
-}]}
+{"groceryList": [
+    {
+        "quantityInInventory": 4,
+        "quantityInShoppingList": 0,
+        "name": "carrot",
+        "category": "vegetables"
+    },
+    {
+        "quantityInInventory": 5,
+        "quantityInShoppingList": 0,
+        "name": "apple",
+        "category": "fruit"
+    }
+]}

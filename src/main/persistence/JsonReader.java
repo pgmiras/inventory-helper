@@ -54,7 +54,7 @@ public class JsonReader {
     private void addItems(GroceryList gl, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("groceryList");
         for (Object json : jsonArray) {
-            JSONObject nextItem= (JSONObject) json;
+            JSONObject nextItem = (JSONObject) json;
             addGroceryItem(gl, nextItem);
         }
     }

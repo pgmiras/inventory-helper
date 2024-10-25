@@ -37,16 +37,16 @@ public class GroceryListTest {
         assertEquals(1, testInventoryList.size());
         testGroceryList.addItem(testGroceryItem2);
         assertEquals(2, testInventoryList.size());
-    }    
+    }
 
     @Test
     void testAddSameItemMultipleTimes() {
-        HashSet<GroceryItem> testGroceryListHashSet= testGroceryList.getGroceryList();
+        HashSet<GroceryItem> testGroceryListHashSet = testGroceryList.getGroceryList();
         testGroceryList.addItem(testGroceryItem1);
         assertEquals(1, testGroceryListHashSet.size());
         testGroceryList.addItem(testGroceryItem1);
         assertEquals(1, testGroceryListHashSet.size());
-    }    
+    }
 
     @Test
     void testRemoveOneItem() {
@@ -70,7 +70,7 @@ public class GroceryListTest {
     }
 
     @Test
-    void testGetItem(){
+    void testGetItem() {
         testGroceryList.addItem(testGroceryItem1);
         testGroceryList.addItem(testGroceryItem2);
         assertEquals(testGroceryItem1, testGroceryList.getItem(testGroceryItem1.getName()));
@@ -79,7 +79,7 @@ public class GroceryListTest {
     @Test
     void testGetItemNotInList() {
         testGroceryList.addItem(testGroceryItem2);
-        assertEquals(null, testGroceryList.getItem(testGroceryItem1.getName()));        
+        assertEquals(null, testGroceryList.getItem(testGroceryItem1.getName()));
     }
 
 }
