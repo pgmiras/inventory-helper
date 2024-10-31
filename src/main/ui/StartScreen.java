@@ -21,9 +21,10 @@ import java.util.Scanner;
 
 // Represents application's main window frame
 public class StartScreen extends JFrame {
-    public static final int WIDTH = 1000;
-	public static final int HEIGHT = 700;
-    public GridBagConstraints gbc;
+    private static final int WIDTH = 1000;
+	private static final int HEIGHT = 700;
+    
+    private JPanel mainPanel;
 
     private Scanner input;
 
@@ -59,32 +60,53 @@ public class StartScreen extends JFrame {
     // MODIFIES: this
     // EFFECTS:  draws the starting JFrame window
     private void initializeGraphics() {
-        setLayout(new GridBagLayout());
-        gbc = new GridBagConstraints();
+        setLayout(new BorderLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        displayMenuBar();
+        displayMainPanel();
         displayInventoryMenu();
         displayShoppingListMenu();
+
         setVisible(true);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds the menu bar at the top of the frame
+    private void displayMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+        JMenu saveMenu = new JMenu("Save");
+        JMenu loadMenu = new JMenu("Load");
+        
+        menuBar.add(saveMenu);
+        menuBar.add(loadMenu);
+
+        setJMenuBar(menuBar);
+        // TODO
+    }
+
+    // MODIFIES: this
+    // EFFECTS:  adds the main panel
+    private void displayMainPanel() {
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(1, 2));
+        add(mainPanel);
     }
 
     // MODIFIES: this
     // EFFECTS:  adds the panel for the inventory menu
     private void displayInventoryMenu() {
         MenuUI inventoryMenu = new MenuUI("inventory", this);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        add(inventoryMenu, gbc);
+        mainPanel.add(inventoryMenu);
     }
 
     // MODIFIES: this
     // EFFECTS:  adds the panel for the shopping list menu
     private void displayShoppingListMenu() {
         MenuUI shoppingListMenu = new MenuUI("shopping list", this);
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        add(shoppingListMenu, gbc);
+        mainPanel.add(shoppingListMenu);
     }
 
     public int getUserInterfaceWidth() {
