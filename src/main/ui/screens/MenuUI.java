@@ -1,13 +1,18 @@
 package ui.screens;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
 import ui.*;
+import ui.screens.tools.*;
 
 import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
+
+// Used SimpleDrawingPlayer as reference
+// Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
 
 // Represents main menu to visualize grocery list and actions for that list
 public class MenuUI extends JPanel {
@@ -15,6 +20,7 @@ public class MenuUI extends JPanel {
     private static int HEIGHT;
 
     private String listType;
+    private List<Tool> tools;
 
     // private JComponent tablePane;
 
@@ -25,12 +31,14 @@ public class MenuUI extends JPanel {
         WIDTH = ((StartScreen) parent).getUserInterfaceWidth() / 2;
         HEIGHT = ((StartScreen) parent).getUserInterfaceHeight();
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
+        Border border = BorderFactory.createLineBorder(Color.black);
         setLayout(new BorderLayout());
+        setBorder(border);
 
         add(new JLabel("What's in your " + this.listType + "?"), BorderLayout.NORTH);
 
         displayTablePane();
-        //displayButtons();
+        displayButtons();
 
         setVisible(true);
 
@@ -60,7 +68,14 @@ public class MenuUI extends JPanel {
     }
 
     private void displayButtons() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'displayButtons'");
+        JPanel toolArea = new JPanel();
+		toolArea.setLayout(new GridLayout(0,1));
+
+        AddTool addTool = new AddTool(toolArea);
+        IncreaseTool increaseTool = new IncreaseTool(toolArea);
+        DecreaseTool decreaseTool = new DecreaseTool(toolArea);
+
+        add(toolArea, BorderLayout.SOUTH);
+        // TODO
     }
 }
