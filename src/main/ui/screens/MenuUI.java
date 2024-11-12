@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
+import model.GroceryItem;
+import model.GroceryList;
 import ui.*;
 import ui.screens.tools.*;
 
@@ -19,14 +21,14 @@ public class MenuUI extends JPanel {
     private static int WIDTH;
     private static int HEIGHT;
 
-    private String listType;
     private List<Tool> tools;
+    private GroceryList groceryList;
 
     // private JComponent tablePane;
 
     // EFFECTS: constructs user interface for menu for grocery list
-    public MenuUI(String listType, Component parent) {
-        this.listType = listType;
+    public MenuUI(GroceryList groceryList, Component parent) {
+        this.groceryList = groceryList;
 
         WIDTH = ((StartScreen) parent).getUserInterfaceWidth() / 2;
         HEIGHT = ((StartScreen) parent).getUserInterfaceHeight();
@@ -35,7 +37,7 @@ public class MenuUI extends JPanel {
         setLayout(new BorderLayout());
         setBorder(border);
 
-        add(new JLabel("What's in your " + this.listType + "?"), BorderLayout.NORTH);
+        add(new JLabel("What's in your " + groceryList.getListType() + "?"), BorderLayout.NORTH);
 
         displayTablePane();
         displayButtons();
@@ -48,21 +50,28 @@ public class MenuUI extends JPanel {
     // EFFECTS: constructs pane containing table
     private void displayTablePane() {
         JPanel panel = new JPanel();
-        JLabel text = new JLabel();
-        text.setText("<HTML>You don't have any items in your " + listType
-                + ". <br> Start adding items or load a saved list.<HTML>");
-        panel.add(text);
-        // panel.add(makeTable());
+
+        if (groceryList.getGroceryList().isEmpty()) {
+            JLabel text = new JLabel();
+            text.setText("<HTML>You don't have any items in your " + groceryList.getListType()
+                    + ". <br> Start adding items or load a saved list.<HTML>");
+            panel.add(text);
+        } else {
+            panel.add(makeTable());
+        }
         JScrollPane tablePane = new JScrollPane(panel);
-        // displayTable();
         add(tablePane, BorderLayout.CENTER);
     }
 
     // EFFECTS: constructs table to view items
     private JTable makeTable() {
         String[] header = { "Name", "Category", "Quantity" };
-        DefaultTableModel model = new DefaultTableModel(header, 0);
-        JTable table = new JTable(model);
+        String[][] data = { 
+            {"test name", "test category", "test quantity"},
+            {"test name 2", "test category 2", "test quantity 2"}};
+        DefaultTableModel model = new DefaultTableModel(data, header);
+        JTable table = new JTable(data, header);
+        table.setPreferredScrollableViewportSize(new Dimension(WIDTH, HEIGHT));
         return table;
         // TODO
     }
@@ -71,11 +80,23 @@ public class MenuUI extends JPanel {
         JPanel toolArea = new JPanel();
 		toolArea.setLayout(new GridLayout(0,1));
 
-        AddTool addTool = new AddTool(toolArea);
-        IncreaseTool increaseTool = new IncreaseTool(toolArea);
-        DecreaseTool decreaseTool = new DecreaseTool(toolArea);
+        AddTool addTool = new AddTool(this, toolArea);
+        IncreaseTool increaseTool = new IncreaseTool(this, toolArea);
+        DecreaseTool decreaseTool = new DecreaseTool(this, toolArea);
 
         add(toolArea, BorderLayout.SOUTH);
         // TODO
+    }
+
+    public GroceryList getGroceryList() {
+        return groceryList;
+    }
+
+    public int getWidth() {
+        return WIDTH;
+    }
+
+    public int getHeight() {
+        return HEIGHT;
     }
 }

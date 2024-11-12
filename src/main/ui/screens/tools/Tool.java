@@ -1,6 +1,9 @@
 package ui.screens.tools;
 
 import javax.swing.*;
+
+import ui.screens.MenuUI;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,8 +12,10 @@ import java.awt.event.ActionListener;
 
 public abstract class Tool implements ActionListener {
     protected JButton button;
+    protected MenuUI menu;
 
-	public Tool(JComponent parent) {
+	public Tool(MenuUI menu, JComponent parent) {
+        this.menu = menu;
 		createButton(parent);
 		addToParent(parent);
 		addListener();
@@ -27,4 +32,8 @@ public abstract class Tool implements ActionListener {
 	public void addToParent(JComponent parent) {
 		parent.add(button);
 	}
+
+    public MenuUI getMenuUI() {
+        return menu;
+    }
 }

@@ -1,6 +1,9 @@
 package ui.screens.tools;
 
 import javax.swing.*;
+
+import ui.screens.MenuUI;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,8 +12,8 @@ import java.awt.event.ActionListener;
 
 public class IncreaseTool extends Tool {
 
-    public IncreaseTool(JComponent parent) {
-        super(parent);
+    public IncreaseTool(MenuUI menu, JComponent parent) {
+        super(menu, parent);
     }
 
     // MODIFIES: this
@@ -31,7 +34,7 @@ public class IncreaseTool extends Tool {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("increase tool");
+        JFrame frame = new JFrame("increase tool" + getMenuUI().getGroceryList().getListType());
         frame.setVisible(true);
     }
 

@@ -2,9 +2,8 @@ package ui.screens;
 
 import javax.swing.*;
 
-import model.GroceryList;
-import persistence.JsonReader;
-import persistence.JsonWriter;
+import model.*;
+import persistence.*;
 
 import java.awt.*;
 import java.util.Scanner;
@@ -40,7 +39,7 @@ public class StartScreen extends JFrame {
     // Used TellerApp as reference (see repository URL above)
     // EFFECTS: runs the inventory application
     public StartScreen() {
-        super("Your Inventory");
+        super("My Inventory");
 
         input = new Scanner(System.in);
 
@@ -49,8 +48,8 @@ public class StartScreen extends JFrame {
         jsonWriterShopping = new JsonWriter(JSON_STORE_SHOPPING);
         jsonReaderShopping = new JsonReader(JSON_STORE_SHOPPING);
 
-        inventory = new GroceryList();
-        shoppingList = new GroceryList();
+        inventory = new InventoryList();
+        shoppingList = new ShoppingList();
 
         initializeGraphics();
     }
@@ -97,14 +96,14 @@ public class StartScreen extends JFrame {
     // MODIFIES: this
     // EFFECTS:  adds the panel for the inventory menu
     private void displayInventoryMenu() {
-        MenuUI inventoryMenu = new MenuUI("inventory", this);
+        MenuUI inventoryMenu = new MenuUI(inventory, this);
         mainPanel.add(inventoryMenu);
     }
 
     // MODIFIES: this
     // EFFECTS:  adds the panel for the shopping list menu
     private void displayShoppingListMenu() {
-        MenuUI shoppingListMenu = new MenuUI("shopping list", this);
+        MenuUI shoppingListMenu = new MenuUI(shoppingList, this);
         mainPanel.add(shoppingListMenu);
     }
 
