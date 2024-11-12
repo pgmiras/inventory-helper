@@ -11,7 +11,7 @@ import persistence.Writable;
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 public class GroceryList implements Writable {
-    protected HashSet<GroceryItem> groceryList;
+    private HashSet<GroceryItem> groceryList;
 
     // EFFECTS: constructs a grocery list with no items
     public GroceryList() {
