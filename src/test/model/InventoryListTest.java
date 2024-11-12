@@ -9,6 +9,7 @@ public class InventoryListTest extends GroceryListTest {
 
     @BeforeEach
     void runBefore() {
+        super.runBefore();
         testGroceryList = new InventoryList();
     }
 
