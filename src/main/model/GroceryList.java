@@ -10,8 +10,10 @@ import persistence.Writable;
 // Used JsonSerializationDemo as reference to structure some methods
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
+// Generic grocery list
 public class GroceryList implements Writable {
     private HashSet<GroceryItem> groceryList;
+    private String listType;
 
     // EFFECTS: constructs a grocery list with no items
     public GroceryList() {
@@ -64,6 +66,10 @@ public class GroceryList implements Writable {
         }
 
         return jsonArray;
+    }
+
+    public String getListType() {
+        return ""; // TODO
     }
 
 }
