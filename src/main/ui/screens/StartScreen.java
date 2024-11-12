@@ -1,11 +1,10 @@
-package ui;
+package ui.screens;
 
 import javax.swing.*;
 
 import model.GroceryList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.screens.*;
 
 import java.awt.*;
 import java.util.Scanner;
