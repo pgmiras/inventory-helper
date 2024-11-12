@@ -21,8 +21,8 @@ import java.util.Scanner;
 
 // Represents application's main window frame
 public class StartScreen extends JFrame {
-    private static final int WIDTH = 1000;
-	private static final int HEIGHT = 700;
+    private static final int WIDTH = 750;
+	private static final int HEIGHT = 500;
     
     private JPanel mainPanel;
 
