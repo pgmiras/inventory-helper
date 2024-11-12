@@ -13,7 +13,7 @@ import persistence.Writable;
 // Generic grocery list
 public class GroceryList implements Writable {
     private HashSet<GroceryItem> groceryList;
-    private String listType;
+    protected String listType;
 
     // EFFECTS: constructs a grocery list with no items
     public GroceryList() {
@@ -69,7 +69,7 @@ public class GroceryList implements Writable {
     }
 
     public String getListType() {
-        return ""; // TODO
+        return listType;
     }
 
 }

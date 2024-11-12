@@ -5,7 +5,8 @@ public class InventoryList extends GroceryList {
     
     // EFFECTS: constructs a grocery list of list type inventory
     public InventoryList() {
-        // TODO
+        super();
+        listType = "inventory";
     }
 
 }
