@@ -3,6 +3,7 @@ package ui.screens.tools;
 import javax.swing.*;
 
 import model.GroceryItem;
+import model.GroceryList;
 import ui.screens.MenuUI;
 
 import java.awt.event.ActionEvent;
@@ -54,8 +55,14 @@ public class AddTool extends Tool {
         int itemQuantity = Integer.parseInt(itemQuantityStr);
 
         GroceryItem groceryItem = new GroceryItem(itemName, itemCategory);
-        groceryItem.increaseQuantityInInventory(itemQuantity);
-        menu.getGroceryList().addItem(groceryItem);
+        GroceryList groceryList = menu.getGroceryList();
+        if (groceryList.getListType() == "inventory") {
+            groceryItem.increaseQuantityInInventory(itemQuantity);
+        } else if (groceryList.getListType() == "shopping list") {
+            groceryItem.increaseQuantityInShoppingList(itemQuantity);
+        }
+        groceryList.addItem(groceryItem);
+        menu.update();
     }
 
 }
