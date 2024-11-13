@@ -1,6 +1,6 @@
 package ui;
 
-import ui.screens.StartScreen;
+import ui.screens.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
