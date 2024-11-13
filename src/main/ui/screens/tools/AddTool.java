@@ -24,7 +24,7 @@ public class AddTool extends Tool {
     // which is passed in as a parameter
     @Override
     protected void createButton(JComponent parent) {
-        button = new JButton("Add item");
+        button = new JButton("Add new item");
         addToParent(parent);
     }
 
