@@ -49,7 +49,7 @@ public class MenuUI extends JPanel {
 
     // EFFECTS: constructs pane containing table
     private void displayTablePane() {
-        JPanel panel = new JPanel();
+        JComponent panel = new JPanel();
 
         if (groceryList.getGroceryList().isEmpty()) {
             JLabel text = new JLabel();
@@ -57,7 +57,7 @@ public class MenuUI extends JPanel {
                     + ". <br> Start adding items or load a saved list.<HTML>");
             panel.add(text);
         } else {
-            panel.add(makeTable());
+            panel = makeTable();
         }
         JScrollPane tablePane = new JScrollPane(panel);
         add(tablePane, BorderLayout.CENTER);
@@ -66,11 +66,12 @@ public class MenuUI extends JPanel {
     // EFFECTS: constructs table to view items
     private JTable makeTable() {
         String[] header = { "Name", "Category", "Quantity" };
-        String[][] data = { 
-            {"test name", "test category", "test quantity"},
-            {"test name 2", "test category 2", "test quantity 2"}};
-        DefaultTableModel model = new DefaultTableModel(data, header);
-        JTable table = new JTable(data, header);
+        // String[][] data = { // TODO to delete
+        //     {"test name", "test category", "test quantity"},
+        //     {"test name 2", "test category 2", "test quantity 2"}};
+        //DefaultTableModel model = new DefaultTableModel(data, header); // TODO to delete
+        DefaultTableModel model = new DefaultTableModel(header, 1);
+        JTable table = new JTable(model);
         table.setPreferredScrollableViewportSize(new Dimension(WIDTH, HEIGHT));
         return table;
         // TODO
