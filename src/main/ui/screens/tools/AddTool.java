@@ -42,16 +42,25 @@ public class AddTool extends Tool {
             "Item name?",
             "Enter new item information",
             JOptionPane.QUESTION_MESSAGE);
+        if (itemName == null) {
+            return;
+        }
         
         String itemCategory = JOptionPane.showInputDialog(null,
             "Item category?",
             "Enter new item information",
             JOptionPane.QUESTION_MESSAGE);
+        if (itemCategory == null) {
+            return;
+        }
 
         String itemQuantityStr = JOptionPane.showInputDialog(null,
             "Item quantity?",
             "Enter new item information",
             JOptionPane.QUESTION_MESSAGE);
+        if (itemQuantityStr == null) {
+            return;
+        }
         int itemQuantity = Integer.parseInt(itemQuantityStr);
 
         GroceryItem groceryItem = new GroceryItem(itemName, itemCategory);
