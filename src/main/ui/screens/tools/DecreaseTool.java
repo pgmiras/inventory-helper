@@ -2,6 +2,8 @@ package ui.screens.tools;
 
 import javax.swing.*;
 
+import model.GroceryItem;
+import model.GroceryList;
 import ui.screens.MenuUI;
 
 import java.awt.event.ActionEvent;
@@ -34,8 +36,34 @@ public class DecreaseTool extends Tool {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("decrease tool" + getMenuUI().getGroceryList().getListType());
-        frame.setVisible(true);
+        //JFrame frame = new JFrame("decrease tool" + getMenuUI().getGroceryList().getListType()); // TODO to delete
+        //frame.setVisible(true); // TODO to delete
+
+        String itemName = JOptionPane.showInputDialog(null,
+            "Which item do you want to decrease? Enter its name:",
+            "Decrease item",
+            JOptionPane.QUESTION_MESSAGE);
+        if (itemName == null) {
+            return;
+        }
+
+        String decreaseQuantityStr = JOptionPane.showInputDialog(null,
+            "By how many?",
+            "Decrease item",
+            JOptionPane.QUESTION_MESSAGE);
+        if (decreaseQuantityStr == null) {
+            return;
+        }
+        int decreaseQuantity = Integer.parseInt(decreaseQuantityStr);
+
+        GroceryList groceryList = menu.getGroceryList();
+        GroceryItem groceryItem = groceryList.getItem(itemName);
+        if (groceryList.getListType() == "inventory") {
+            groceryItem.decreaseQuantityInInventory(decreaseQuantity);
+        } else if (groceryList.getListType() == "shopping list") {
+            groceryItem.decreaseQuantityInShoppingList(decreaseQuantity);
+        }
+        menu.update();
     }
 
 }

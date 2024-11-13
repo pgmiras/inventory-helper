@@ -87,9 +87,17 @@ public class MenuUI extends JPanel {
             String itemCategory = item.getCategory();
             String itemQuantity = "";
             if (groceryList.getListType() == "inventory") {
-                itemQuantity = String.valueOf(item.getQuantityInInventory());
-            } else {
-                itemQuantity = String.valueOf(item.getQuantityInShoppingList());
+                int itemQuantityInt = item.getQuantityInInventory();
+                if (itemQuantityInt <= 0) {
+                    continue;
+                }
+                itemQuantity = String.valueOf(itemQuantityInt);
+            } else if (groceryList.getListType() == "shopping list") {
+                int itemQuantityInt = item.getQuantityInShoppingList();
+                if (itemQuantityInt <= 0) {
+                    continue;
+                }
+                itemQuantity = String.valueOf(itemQuantityInt);
             }
             String[] row = {itemName, itemCategory, itemQuantity};
             ((DefaultTableModel) model).addRow(row);
