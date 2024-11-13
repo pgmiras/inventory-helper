@@ -28,8 +28,6 @@ public class MenuUI extends JPanel {
     private List<Tool> tools;
     private GroceryList groceryList;
 
-    // private JComponent tablePane;
-
     // EFFECTS: constructs user interface for menu for grocery list
     public MenuUI(GroceryList groceryList, Component parent) {
         this.groceryList = groceryList;
@@ -52,16 +50,10 @@ public class MenuUI extends JPanel {
         // TODO
     }
 
+    // MODIFIES: this
     // EFFECTS: constructs pane containing table
     private void displayTablePane() {
-        JComponent panel = new JPanel();
-
-        JLabel text = new JLabel();
-            text.setText("<HTML>You don't have any items in your " + groceryList.getListType()
-                    + ". <br> Start adding items or load a saved list.<HTML>");
-        panel.add(text);
-
-        tablePane = new JScrollPane(panel);
+        tablePane = new JScrollPane(displayWhenListIsEmpty());
         add(tablePane, BorderLayout.CENTER);
     }
 
@@ -79,6 +71,7 @@ public class MenuUI extends JPanel {
         // TODO
     }
 
+    // MODIFIES: this
     // EFFECTS: updates table with updated data
     private void updateTable() {
         TableModel model = table.getModel();
@@ -104,6 +97,7 @@ public class MenuUI extends JPanel {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: constructs panel containing buttons
     private void displayButtons() {
         JPanel toolArea = new JPanel();
@@ -120,9 +114,23 @@ public class MenuUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: updates this when there are changes to grocery list data
     public void update() {
-        table = makeTable();
-        updateTable();
-        tablePane.setViewportView(table);
+        if (!groceryList.getGroceryList().isEmpty()) {
+            table = makeTable();
+            updateTable();
+            tablePane.setViewportView(table);
+        } else {
+            tablePane.setViewportView(displayWhenListIsEmpty());
+        }
+    }
+
+    // EFFECTS: the component displayed when grocery list is empty
+    private JComponent displayWhenListIsEmpty() {
+        JComponent panel = new JPanel();
+        JLabel text = new JLabel();
+            text.setText("<HTML>You don't have any items in your " + groceryList.getListType()
+                    + ". <br> Start adding items or load a saved list.<HTML>");
+        panel.add(text);
+        return panel;
     }
 
     public GroceryList getGroceryList() {

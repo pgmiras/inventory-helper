@@ -60,8 +60,14 @@ public class DecreaseTool extends Tool {
         GroceryItem groceryItem = groceryList.getItem(itemName);
         if (groceryList.getListType() == "inventory") {
             groceryItem.decreaseQuantityInInventory(decreaseQuantity);
+            if (groceryItem.getQuantityInInventory() <= 0) {
+                groceryList.removeItem(groceryItem);
+            }
         } else if (groceryList.getListType() == "shopping list") {
             groceryItem.decreaseQuantityInShoppingList(decreaseQuantity);
+            if (groceryItem.getQuantityInShoppingList() <= 0) {
+                groceryList.removeItem(groceryItem);
+            }
         }
         menu.update();
     }
