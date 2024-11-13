@@ -2,6 +2,8 @@ package ui.screens.tools;
 
 import javax.swing.*;
 
+import model.GroceryItem;
+import model.GroceryList;
 import ui.screens.MenuUI;
 
 import java.awt.event.ActionEvent;
@@ -34,8 +36,32 @@ public class IncreaseTool extends Tool {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("increase tool" + getMenuUI().getGroceryList().getListType());
-        frame.setVisible(true);
+
+        String itemName = JOptionPane.showInputDialog(null,
+            "Which item do you want to increase? Enter its name:",
+            "Increase item",
+            JOptionPane.QUESTION_MESSAGE);
+        if (itemName == null) {
+            return;
+        }
+
+        String increaseQuantityStr = JOptionPane.showInputDialog(null,
+            "By how many?",
+            "Increase item",
+            JOptionPane.QUESTION_MESSAGE);
+        if (increaseQuantityStr == null) {
+            return;
+        }
+        int increaseQuantity = Integer.parseInt(increaseQuantityStr);
+
+        GroceryList groceryList = menu.getGroceryList();
+        GroceryItem groceryItem = groceryList.getItem(itemName);
+        if (groceryList.getListType() == "inventory") {
+            groceryItem.increaseQuantityInInventory(increaseQuantity);
+        } else if (groceryList.getListType() == "shopping list") {
+            groceryItem.increaseQuantityInShoppingList(increaseQuantity);
+        }
+        menu.update();
     }
 
 }
