@@ -87,6 +87,7 @@ public class InventoryAppUI extends JFrame {
 
         SaveInventoryTool saveInventoryMenu = new SaveInventoryTool(this, saveMenu);
         SaveShoppingListTool saveShoppingListTool = new SaveShoppingListTool(this, saveMenu);
+        SaveBothTool saveBothMenu = new SaveBothTool(this, saveMenu);
 
         setJMenuBar(menuBar);
         // TODO
