@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
 
 public abstract class Tool implements ActionListener {
-    protected JButton button;
+    protected AbstractButton button;
     protected Container mainContainer;
 
 	public Tool(Container mainContainer, JComponent parent) {
