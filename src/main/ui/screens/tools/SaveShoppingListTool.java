@@ -15,7 +15,7 @@ public class SaveShoppingListTool extends Tool {
         super(mainContainer, parent);
     }
 
-    // EFFECTS: constructs the save inventory menu which is then added to parent
+    // EFFECTS: constructs the save shopping list menu which is then added to parent
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Save shopping list");
