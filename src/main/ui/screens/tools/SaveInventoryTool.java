@@ -11,9 +11,9 @@ import ui.screens.MenuUI;
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
 
 // Menu item for saving inventory
-public class SaveInventoryMenu extends Tool {
+public class SaveInventoryTool extends Tool {
 
-    public SaveInventoryMenu(Container mainContainer, JComponent parent) {
+    public SaveInventoryTool(Container mainContainer, JComponent parent) {
         super(mainContainer, parent);
     }
 

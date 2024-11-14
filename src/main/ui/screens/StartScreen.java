@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import model.*;
 import persistence.*;
-import ui.screens.tools.SaveInventoryMenu;
+import ui.screens.tools.SaveInventoryTool;
 
 import java.awt.*;
 import java.util.Scanner;
@@ -84,7 +84,7 @@ public class StartScreen extends JFrame {
         menuBar.add(saveMenu);
         menuBar.add(loadMenu);
 
-        SaveInventoryMenu saveInventoryMenu = new SaveInventoryMenu(this, saveMenu);
+        SaveInventoryTool saveInventoryMenu = new SaveInventoryTool(this, saveMenu);
 
         setJMenuBar(menuBar);
         // TODO
