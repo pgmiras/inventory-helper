@@ -2,6 +2,7 @@ package ui.screens.tools;
 
 import javax.swing.*;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,9 +11,9 @@ import java.awt.event.ActionListener;
 
 public abstract class Tool implements ActionListener {
     protected JButton button;
-    protected JComponent mainContainer;
+    protected Container mainContainer;
 
-	public Tool(JComponent mainContainer, JComponent parent) {
+	public Tool(Container mainContainer, JComponent parent) {
         this.mainContainer = mainContainer;
 		createButton(parent);
 		addToParent(parent);
@@ -31,7 +32,7 @@ public abstract class Tool implements ActionListener {
 		parent.add(button);
 	}
 
-    public JComponent getJComponent() {
+    public Container getJComponent() {
         return mainContainer;
     }
 }

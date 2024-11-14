@@ -1,5 +1,6 @@
 package ui.screens.tools;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JComponent;
@@ -12,7 +13,7 @@ import ui.screens.MenuUI;
 // Menu button for saving at the top of the screen
 public class SaveMenu extends Tool {
 
-    public SaveMenu(JComponent mainContainer, JComponent parent) {
+    public SaveMenu(Container mainContainer, JComponent parent) {
         super(mainContainer, parent);
         //TODO Auto-generated constructor stub
     }
