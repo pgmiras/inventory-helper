@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import model.*;
 import persistence.*;
+import ui.screens.tools.SaveInventoryMenu;
 
 import java.awt.*;
 import java.util.Scanner;
@@ -23,6 +24,8 @@ public class StartScreen extends JFrame {
 	private static final int HEIGHT = 500;
     
     private JPanel mainPanel;
+    private MenuUI inventoryMenu;
+    private MenuUI shoppingListMenu;
 
     private Scanner input;
 
@@ -75,11 +78,13 @@ public class StartScreen extends JFrame {
     // EFFECTS: adds the menu bar at the top of the frame
     private void displayMenuBar() {
         JMenuBar menuBar = new JMenuBar();
+
         JMenu saveMenu = new JMenu("Save");
         JMenu loadMenu = new JMenu("Load");
-        
         menuBar.add(saveMenu);
         menuBar.add(loadMenu);
+
+        SaveInventoryMenu saveInventoryMenu = new SaveInventoryMenu(this, saveMenu);
 
         setJMenuBar(menuBar);
         // TODO
@@ -96,14 +101,14 @@ public class StartScreen extends JFrame {
     // MODIFIES: this
     // EFFECTS:  adds the panel for the inventory menu
     private void displayInventoryMenu() {
-        MenuUI inventoryMenu = new MenuUI(inventory, this);
+        inventoryMenu = new MenuUI(inventory, this);
         mainPanel.add(inventoryMenu);
     }
 
     // MODIFIES: this
     // EFFECTS:  adds the panel for the shopping list menu
     private void displayShoppingListMenu() {
-        MenuUI shoppingListMenu = new MenuUI(shoppingList, this);
+        shoppingListMenu = new MenuUI(shoppingList, this);
         mainPanel.add(shoppingListMenu);
     }
 
