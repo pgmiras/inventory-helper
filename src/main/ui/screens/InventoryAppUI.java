@@ -8,7 +8,6 @@ import ui.screens.tools.*;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 // Used TellerApp as reference
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/TellerApp
@@ -28,8 +27,6 @@ public class InventoryAppUI extends JFrame {
     private MenuUI inventoryMenu;
     private MenuUI shoppingListMenu;
 
-    private Scanner input;
-
     private static final String JSON_STORE_INVENTORY = "./data/inventory.json";
     private static final String JSON_STORE_SHOPPING = "./data/shoppinglist.json";
     private JsonWriter jsonWriterInventory;
@@ -44,8 +41,6 @@ public class InventoryAppUI extends JFrame {
     // EFFECTS: runs the inventory application
     public InventoryAppUI() {
         super("My Inventory");
-
-        input = new Scanner(System.in);
 
         jsonWriterInventory = new JsonWriter(JSON_STORE_INVENTORY);
         jsonReaderInventory = new JsonReader(JSON_STORE_INVENTORY);
