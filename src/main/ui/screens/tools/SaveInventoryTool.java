@@ -2,10 +2,13 @@ package ui.screens.tools;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.*;
 
-import ui.screens.MenuUI;
+import model.GroceryList;
+import persistence.JsonWriter;
+import ui.screens.StartScreen;
 
 // Used SimpleDrawingPlayer as reference
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
@@ -34,9 +37,11 @@ public class SaveInventoryTool extends Tool {
     // EFFECTS: saves inventory
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame();
-        frame.add(new JLabel("saving inventory"));
-        frame.setVisible(true);
+        ((StartScreen) mainContainer).saveGroceryList("inventory");
+        JOptionPane.showMessageDialog(null,
+            "Your inventory has been saved.",
+            "Inventory Saved Successfully",
+            JOptionPane.INFORMATION_MESSAGE);
     }
 
 }
