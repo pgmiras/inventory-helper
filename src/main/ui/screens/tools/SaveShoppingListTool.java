@@ -7,7 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import ui.screens.StartScreen;
+import ui.screens.InventoryAppUI;
 
 public class SaveShoppingListTool extends Tool {
 
@@ -32,7 +32,7 @@ public class SaveShoppingListTool extends Tool {
     // EFFECTS: saves shopping list
     @Override
     public void actionPerformed(ActionEvent e) {
-        ((StartScreen) mainContainer).saveGroceryList("shopping list");
+        ((InventoryAppUI) mainContainer).saveGroceryList("shopping list");
         JOptionPane.showMessageDialog(null,
             "Your shopping list has been saved.",
             "Shopping List Saved Successfully",

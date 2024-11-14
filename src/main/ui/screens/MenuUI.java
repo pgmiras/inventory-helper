@@ -33,8 +33,8 @@ public class MenuUI extends JPanel {
         this.groceryList = groceryList;
         table = makeTable();
 
-        WIDTH = ((StartScreen) parent).getUserInterfaceWidth() / 2;
-        HEIGHT = ((StartScreen) parent).getUserInterfaceHeight();
+        WIDTH = ((InventoryAppUI) parent).getUserInterfaceWidth() / 2;
+        HEIGHT = ((InventoryAppUI) parent).getUserInterfaceHeight();
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         Border border = BorderFactory.createLineBorder(Color.black);
         setLayout(new BorderLayout());

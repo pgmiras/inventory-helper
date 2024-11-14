@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import model.GroceryList;
 import persistence.JsonWriter;
-import ui.screens.StartScreen;
+import ui.screens.InventoryAppUI;
 
 // Used SimpleDrawingPlayer as reference
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
@@ -37,7 +37,7 @@ public class SaveInventoryTool extends Tool {
     // EFFECTS: saves inventory
     @Override
     public void actionPerformed(ActionEvent e) {
-        ((StartScreen) mainContainer).saveGroceryList("inventory");
+        ((InventoryAppUI) mainContainer).saveGroceryList("inventory");
         JOptionPane.showMessageDialog(null,
             "Your inventory has been saved.",
             "Inventory Saved Successfully",

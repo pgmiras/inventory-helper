@@ -20,7 +20,7 @@ import java.util.Scanner;
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
 
 // Represents application's main window frame
-public class StartScreen extends JFrame {
+public class InventoryAppUI extends JFrame {
     private static final int WIDTH = 750;
     private static final int HEIGHT = 500;
 
@@ -42,7 +42,7 @@ public class StartScreen extends JFrame {
 
     // Used TellerApp as reference (see repository URL above)
     // EFFECTS: runs the inventory application
-    public StartScreen() {
+    public InventoryAppUI() {
         super("My Inventory");
 
         input = new Scanner(System.in);
