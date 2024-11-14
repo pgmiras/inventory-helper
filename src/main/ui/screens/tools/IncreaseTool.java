@@ -34,6 +34,9 @@ public class IncreaseTool extends Tool {
 		button.addActionListener(this);
 	}
 
+    // REQUIRES: item is in grocery list
+    // EFFECTS: asks user the name and amount of the item they'd like to increase
+    // then increases quantity of that item in the grocery list by that amount
     @Override
     public void actionPerformed(ActionEvent e) {
 

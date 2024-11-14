@@ -35,6 +35,8 @@ public class AddTool extends Tool {
         button.addActionListener(this);
     }
 
+    // EFFECTS: asks user the name, category, and quantity of the new item
+    // then adds new item to grocery list
     @Override
     public void actionPerformed(ActionEvent e) {
 
