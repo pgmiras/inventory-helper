@@ -7,6 +7,7 @@ import persistence.*;
 import ui.screens.tools.SaveInventoryTool;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 // Used TellerApp as reference
@@ -111,6 +112,31 @@ public class StartScreen extends JFrame {
         shoppingListMenu = new MenuUI(shoppingList, this);
         mainPanel.add(shoppingListMenu);
     }
+
+    // REQUIRES: listType is either "inventory" or "shopping list"
+    // EFFECTS: saves the grocery list to file
+    public void saveGroceryList(String listType) {
+        JsonWriter jsonWriter = new JsonWriter("");
+        String jsonStore = "";
+        GroceryList gl = new GroceryList();
+        if (listType.equals("inventory")) {
+            jsonWriter = jsonWriterInventory;
+            jsonStore = JSON_STORE_INVENTORY;
+            gl = inventory;
+        } else if (listType.equals("shopping list")) {
+            jsonWriter = jsonWriterShopping;
+            jsonStore = JSON_STORE_SHOPPING;
+            gl = shoppingList;
+        }
+        try {
+            jsonWriter.open();
+            jsonWriter.write(gl);
+            jsonWriter.close();
+            System.out.println("Saved your " + listType + " to " + jsonStore);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + jsonStore);
+        }
+    }    
 
     public int getUserInterfaceWidth() {
         return WIDTH;
