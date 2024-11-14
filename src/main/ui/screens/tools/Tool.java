@@ -12,8 +12,8 @@ public abstract class Tool implements ActionListener {
     protected JButton button;
     protected JComponent mainContainer;
 
-	public Tool(JComponent menu, JComponent parent) {
-        this.mainContainer = menu;
+	public Tool(JComponent mainContainer, JComponent parent) {
+        this.mainContainer = mainContainer;
 		createButton(parent);
 		addToParent(parent);
 		addListener();
