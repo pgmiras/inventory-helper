@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import model.*;
 import persistence.*;
-import ui.screens.tools.SaveInventoryTool;
+import ui.screens.tools.*;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -22,8 +22,8 @@ import java.util.Scanner;
 // Represents application's main window frame
 public class StartScreen extends JFrame {
     private static final int WIDTH = 750;
-	private static final int HEIGHT = 500;
-    
+    private static final int HEIGHT = 500;
+
     private JPanel mainPanel;
     private MenuUI inventoryMenu;
     private MenuUI shoppingListMenu;
@@ -60,7 +60,7 @@ public class StartScreen extends JFrame {
 
     // Used SimpleDrawingPlayer as reference (see repository URL above)
     // MODIFIES: this
-    // EFFECTS:  draws the starting JFrame window
+    // EFFECTS: draws the starting JFrame window
     private void initializeGraphics() {
         setLayout(new BorderLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
@@ -86,13 +86,14 @@ public class StartScreen extends JFrame {
         menuBar.add(loadMenu);
 
         SaveInventoryTool saveInventoryMenu = new SaveInventoryTool(this, saveMenu);
+        SaveShoppingListTool saveShoppingListTool = new SaveShoppingListTool(this, saveMenu);
 
         setJMenuBar(menuBar);
         // TODO
     }
 
     // MODIFIES: this
-    // EFFECTS:  adds the main panel
+    // EFFECTS: adds the main panel
     private void displayMainPanel() {
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(1, 2));
@@ -100,14 +101,14 @@ public class StartScreen extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS:  adds the panel for the inventory menu
+    // EFFECTS: adds the panel for the inventory menu
     private void displayInventoryMenu() {
         inventoryMenu = new MenuUI(inventory, this);
         mainPanel.add(inventoryMenu);
     }
 
     // MODIFIES: this
-    // EFFECTS:  adds the panel for the shopping list menu
+    // EFFECTS: adds the panel for the shopping list menu
     private void displayShoppingListMenu() {
         shoppingListMenu = new MenuUI(shoppingList, this);
         mainPanel.add(shoppingListMenu);
@@ -132,11 +133,13 @@ public class StartScreen extends JFrame {
             jsonWriter.open();
             jsonWriter.write(gl);
             jsonWriter.close();
-            System.out.println("Saved your " + listType + " to " + jsonStore);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + jsonStore);
+            JOptionPane.showMessageDialog(null,
+                    "Unable to write to file: " + jsonStore,
+                    "Save Unsuccessful",
+                    JOptionPane.WARNING_MESSAGE);
         }
-    }    
+    }
 
     public int getUserInterfaceWidth() {
         return WIDTH;
