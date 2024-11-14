@@ -54,14 +54,14 @@ public class IncreaseTool extends Tool {
         }
         int increaseQuantity = Integer.parseInt(increaseQuantityStr);
 
-        GroceryList groceryList = menu.getGroceryList();
+        GroceryList groceryList = ((MenuUI) mainContainer).getGroceryList();
         GroceryItem groceryItem = groceryList.getItem(itemName);
         if (groceryList.getListType() == "inventory") {
             groceryItem.increaseQuantityInInventory(increaseQuantity);
         } else if (groceryList.getListType() == "shopping list") {
             groceryItem.increaseQuantityInShoppingList(increaseQuantity);
         }
-        menu.update();
+        ((MenuUI) mainContainer).update();
     }
 
 }

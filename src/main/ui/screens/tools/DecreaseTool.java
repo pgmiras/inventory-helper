@@ -56,7 +56,7 @@ public class DecreaseTool extends Tool {
         }
         int decreaseQuantity = Integer.parseInt(decreaseQuantityStr);
 
-        GroceryList groceryList = menu.getGroceryList();
+        GroceryList groceryList = ((MenuUI) mainContainer).getGroceryList();
         GroceryItem groceryItem = groceryList.getItem(itemName);
         if (groceryList.getListType() == "inventory") {
             groceryItem.decreaseQuantityInInventory(decreaseQuantity);
@@ -69,7 +69,7 @@ public class DecreaseTool extends Tool {
                 groceryList.removeItem(groceryItem);
             }
         }
-        menu.update();
+        ((MenuUI) mainContainer).update();
     }
 
 }

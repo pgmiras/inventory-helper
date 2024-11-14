@@ -64,14 +64,14 @@ public class AddTool extends Tool {
         int itemQuantity = Integer.parseInt(itemQuantityStr);
 
         GroceryItem groceryItem = new GroceryItem(itemName, itemCategory);
-        GroceryList groceryList = menu.getGroceryList();
+        GroceryList groceryList = ((MenuUI) mainContainer).getGroceryList();
         if (groceryList.getListType() == "inventory") {
             groceryItem.increaseQuantityInInventory(itemQuantity);
         } else if (groceryList.getListType() == "shopping list") {
             groceryItem.increaseQuantityInShoppingList(itemQuantity);
         }
         groceryList.addItem(groceryItem);
-        menu.update();
+        ((MenuUI) mainContainer).update();
     }
 
 }
