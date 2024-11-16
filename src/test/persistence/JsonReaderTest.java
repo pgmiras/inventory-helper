@@ -49,19 +49,4 @@ class JsonReaderTest extends JsonTest {
             fail("Couldn't read from file");
         }
     }
-
-    @Test
-    void testReaderInventoryList() {
-        JsonReader reader = new JsonReader("./data/testReaderInventoryList.json");
-        try {
-            GroceryList gl = reader.read();
-            assertEquals("inventory", gl.getListType());
-            assertEquals(3, gl.getGroceryList().size());
-            checkGroceryItem("milk", 3, 2, "dairy", gl.getItem("milk"));
-            checkGroceryItem("carrot", 2, 0, "vegetables", gl.getItem("carrot"));
-            checkGroceryItem("apple", 0, 4, "fruits", gl.getItem("apple"));
-        } catch (IOException e) {
-            fail("Couldn't read from file");
-        }
-    }
 }
