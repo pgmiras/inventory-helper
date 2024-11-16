@@ -2,7 +2,6 @@ package persistence;
 
 import org.json.JSONObject;
 
-import model.GroceryList;
 import model.ShoppingList;
 
 public class JsonReaderShopping extends JsonReader {
@@ -15,7 +14,7 @@ public class JsonReaderShopping extends JsonReader {
     // EFFECTS: parses shopping list from JSON object and returns it
     @Override
     protected ShoppingList parseGroceryList(JSONObject jsonObject) {
-        GroceryList gl = new GroceryList();
+        ShoppingList gl = new ShoppingList();
         addItems(gl, jsonObject);
         return gl;
     }
