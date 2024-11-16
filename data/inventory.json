@@ -6,7 +6,13 @@
         "category": "vegetables"
     },
     {
-        "quantityInInventory": 5,
+        "quantityInInventory": 8,
+        "quantityInShoppingList": 0,
+        "name": "milk",
+        "category": "dairy"
+    },
+    {
+        "quantityInInventory": 3,
         "quantityInShoppingList": 0,
         "name": "apple",
         "category": "fruit"
