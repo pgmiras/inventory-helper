@@ -1,6 +1,8 @@
 package persistence;
 
 import model.GroceryList;
+import model.InventoryList;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -39,6 +41,21 @@ class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderGeneralGroceryList.json");
         try {
             GroceryList gl = reader.read();
+            assertEquals(3, gl.getGroceryList().size());
+            checkGroceryItem("milk", 3, 2, "dairy", gl.getItem("milk"));
+            checkGroceryItem("carrot", 2, 0, "vegetables", gl.getItem("carrot"));
+            checkGroceryItem("apple", 0, 4, "fruits", gl.getItem("apple"));
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+
+    @Test
+    void testReaderInventoryList() {
+        JsonReader reader = new JsonReader("./data/testReaderInventoryList.json");
+        try {
+            GroceryList gl = reader.read();
+            assertEquals("inventory", gl.getListType());
             assertEquals(3, gl.getGroceryList().size());
             checkGroceryItem("milk", 3, 2, "dairy", gl.getItem("milk"));
             checkGroceryItem("carrot", 2, 0, "vegetables", gl.getItem("carrot"));
