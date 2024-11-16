@@ -133,6 +133,10 @@ public class MenuUI extends JPanel {
         return panel;
     }
 
+    public void setGroceryList(GroceryList gl) {
+        groceryList = gl;
+    }
+
     public GroceryList getGroceryList() {
         return groceryList;
     }
