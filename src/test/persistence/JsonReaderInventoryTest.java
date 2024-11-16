@@ -12,7 +12,7 @@ import model.GroceryList;
 public class JsonReaderInventoryTest extends JsonReaderTest {
     @Test
     void testReaderInventoryList() {
-        JsonReader reader = new JsonReader("./data/testReaderInventoryList.json");
+        JsonReaderInventory reader = new JsonReaderInventory("./data/testReaderInventoryList.json");
         try {
             GroceryList gl = reader.read();
             assertEquals("inventory", gl.getListType());
