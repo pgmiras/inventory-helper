@@ -8,6 +8,7 @@ import ui.screens.tools.*;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 // Used TellerApp as reference
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/TellerApp
@@ -133,6 +134,30 @@ public class InventoryAppUI extends JFrame {
             JOptionPane.showMessageDialog(null,
                     "Unable to write to file: " + jsonStore,
                     "Save Unsuccessful",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    // REQUIRES: listType is either "inventory" or "shopping list"
+    // MODIFIES: this
+    // EFFECTS: loads grocery list from file
+    public void loadGroceryList(String listType) {
+        JsonReader jsonReader = new JsonReader("");
+        String jsonStore = "";
+        try {
+            if (listType.equals("inventory")) {
+                jsonReader = jsonReaderInventory;
+                jsonStore = JSON_STORE_INVENTORY;
+                inventory = jsonReader.read();
+            } else if (listType.equals("shopping list")) {
+                jsonReader = jsonReaderShopping;
+                jsonStore = JSON_STORE_SHOPPING;
+                shoppingList = jsonReader.read();
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Unable to read from file: " + jsonStore,
+                    "Load Unsuccessful",
                     JOptionPane.WARNING_MESSAGE);
         }
     }
