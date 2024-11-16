@@ -44,9 +44,9 @@ public class InventoryAppUI extends JFrame {
         super("My Inventory");
 
         jsonWriterInventory = new JsonWriter(JSON_STORE_INVENTORY);
-        jsonReaderInventory = new JsonReader(JSON_STORE_INVENTORY);
+        jsonReaderInventory = new JsonReaderInventory(JSON_STORE_INVENTORY);
         jsonWriterShopping = new JsonWriter(JSON_STORE_SHOPPING);
-        jsonReaderShopping = new JsonReader(JSON_STORE_SHOPPING);
+        jsonReaderShopping = new JsonReaderShopping(JSON_STORE_SHOPPING);
 
         inventory = new InventoryList();
         shoppingList = new ShoppingList();
