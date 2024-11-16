@@ -1,0 +1,17 @@
+{
+    "groceryList": [
+        {
+            "name": "carrot",
+            "quantityInInventory": 0,
+            "quantityInShoppingList": 5,
+            "category": "vegetables"
+        },
+        {
+            "name": "honey",
+            "quantityInInventory": 0,
+            "quantityInShoppingList": 4,
+            "category": "sweeteners"
+        }
+    ],
+    "listType": "shopping list"
+}
