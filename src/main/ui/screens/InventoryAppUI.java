@@ -85,6 +85,8 @@ public class InventoryAppUI extends JFrame {
         SaveShoppingListTool saveShoppingListTool = new SaveShoppingListTool(this, saveMenu);
         SaveBothTool saveBothMenu = new SaveBothTool(this, saveMenu);
 
+        LoadInventoryTool loadInventoryMenu = new LoadInventoryTool(this, loadMenu);
+
         setJMenuBar(menuBar);
         // TODO
     }
@@ -149,10 +151,14 @@ public class InventoryAppUI extends JFrame {
                 jsonReader = jsonReaderInventory;
                 jsonStore = JSON_STORE_INVENTORY;
                 inventory = jsonReader.read();
+                inventoryMenu.setGroceryList(inventory);
+                inventoryMenu.update();
             } else if (listType.equals("shopping list")) {
                 jsonReader = jsonReaderShopping;
                 jsonStore = JSON_STORE_SHOPPING;
                 shoppingList = jsonReader.read();
+                shoppingListMenu.setGroceryList(shoppingList);
+                shoppingListMenu.update();
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null,
