@@ -16,7 +16,7 @@ import org.json.*;
 
 // Represents a reader that reads grocery list from JSON data stored in file
 public class JsonReader {
-    private String source;
+    protected String source;
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
@@ -32,7 +32,7 @@ public class JsonReader {
     }
 
     // EFFECTS: reads source file as string and returns it
-    private String readFile(String source) throws IOException {
+    protected String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
@@ -43,7 +43,7 @@ public class JsonReader {
     }
 
     // EFFECTS: parses grocery list from JSON object and returns it
-    private GroceryList parseGroceryList(JSONObject jsonObject) {
+    protected GroceryList parseGroceryList(JSONObject jsonObject) {
         GroceryList gl = new GroceryList();
         addItems(gl, jsonObject);
         return gl;
@@ -51,7 +51,7 @@ public class JsonReader {
 
     // MODIFIES: gl
     // EFFECTS: parses grocery items from JSON object and adds them to grocery list
-    private void addItems(GroceryList gl, JSONObject jsonObject) {
+    protected void addItems(GroceryList gl, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("groceryList");
         for (Object json : jsonArray) {
             JSONObject nextItem = (JSONObject) json;
@@ -61,7 +61,7 @@ public class JsonReader {
 
     // MODIFIES: gl
     // EFFECTS: parses grocery item from JSON object and adds it to grocery list
-    private void addGroceryItem(GroceryList gl, JSONObject jsonObject) {
+    protected void addGroceryItem(GroceryList gl, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int quantityInInventory = jsonObject.getInt("quantityInInventory");
         int quantityInShoppingList = jsonObject.getInt("quantityInShoppingList");
