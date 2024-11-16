@@ -2,7 +2,7 @@ package persistence;
 
 import org.json.JSONObject;
 
-import model.GroceryList;
+import model.InventoryList;
 
 public class JsonReaderInventory extends JsonReader {
 
@@ -13,8 +13,8 @@ public class JsonReaderInventory extends JsonReader {
 
     // EFFECTS: parses inventory list from JSON object and returns it
     @Override
-    protected GroceryList parseGroceryList(JSONObject jsonObject) {
-        GroceryList gl = new GroceryList();
+    protected InventoryList parseGroceryList(JSONObject jsonObject) {
+        InventoryList gl = new InventoryList();
         addItems(gl, jsonObject);
         return gl;
     }
