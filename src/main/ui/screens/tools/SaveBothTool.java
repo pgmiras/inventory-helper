@@ -19,6 +19,7 @@ public class SaveBothTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Save both");
+        button.setIcon(saveIcon);
         addToParent(parent);
     }
 

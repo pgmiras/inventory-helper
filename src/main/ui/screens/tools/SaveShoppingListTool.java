@@ -19,6 +19,7 @@ public class SaveShoppingListTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Save shopping list");
+        button.setIcon(saveIcon);
         addToParent(parent);
     }
 

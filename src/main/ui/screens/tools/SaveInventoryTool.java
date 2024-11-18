@@ -24,6 +24,7 @@ public class SaveInventoryTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Save inventory");
+        button.setIcon(saveIcon);
         addToParent(parent);
     }
 
