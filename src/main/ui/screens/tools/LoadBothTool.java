@@ -19,6 +19,7 @@ public class LoadBothTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Load both");
+        button.setIcon(loadIcon);
         addToParent(parent);
     }
 

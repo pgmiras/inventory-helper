@@ -24,6 +24,7 @@ public class LoadShoppingListTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Load shopping list");
+        button.setIcon(loadIcon);
         addToParent(parent);
     }
 

@@ -24,6 +24,7 @@ public class LoadInventoryTool extends Tool {
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Load inventory");
+        button.setIcon(loadIcon);
         addToParent(parent);
     }
 
