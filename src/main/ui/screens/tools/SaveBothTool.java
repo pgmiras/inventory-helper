@@ -15,7 +15,8 @@ public class SaveBothTool extends Tool {
         super(mainContainer, parent);
     }
 
-    // EFFECTS: constructs menu to save both grocery lists which is then added to parent
+    // EFFECTS: constructs menu to save both grocery lists which is then added to
+    // parent
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Save both");
@@ -36,8 +37,8 @@ public class SaveBothTool extends Tool {
         ((InventoryAppUI) mainContainer).saveGroceryList("inventory");
         ((InventoryAppUI) mainContainer).saveGroceryList("shopping list");
         JOptionPane.showMessageDialog(null,
-            "Your inventory and your shopping list have been saved.",
-            "Grocery Lists Saved Successfully",
-            JOptionPane.INFORMATION_MESSAGE);
+                "Your inventory and your shopping list have been saved.",
+                "Grocery Lists Saved Successfully",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }

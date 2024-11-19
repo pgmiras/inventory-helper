@@ -19,25 +19,25 @@ public abstract class Tool implements ActionListener {
     protected ImageIcon saveIcon;
     protected ImageIcon loadIcon;
 
-	public Tool(Container mainContainer, JComponent parent) {
+    public Tool(Container mainContainer, JComponent parent) {
         this.mainContainer = mainContainer;
-		loadImages();
+        loadImages();
         createButton(parent);
-		addToParent(parent);
-		addListener();
-	}
+        addToParent(parent);
+        addListener();
+    }
 
     // EFFECTS: creates button to activate tool
-	protected abstract void createButton(JComponent parent);
+    protected abstract void createButton(JComponent parent);
 
-	// EFFECTS: adds a listener for this tool
-	protected abstract void addListener();
+    // EFFECTS: adds a listener for this tool
+    protected abstract void addListener();
 
-	// MODIFIES: parent
-	// EFFECTS:  adds the given button to the parent component
-	public void addToParent(JComponent parent) {
-		parent.add(button);
-	}
+    // MODIFIES: parent
+    // EFFECTS: adds the given button to the parent component
+    public void addToParent(JComponent parent) {
+        parent.add(button);
+    }
 
     // EFFECTS: helper method to load images used as icons
     private void loadImages() {

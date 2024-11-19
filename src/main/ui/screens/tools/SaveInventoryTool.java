@@ -40,9 +40,9 @@ public class SaveInventoryTool extends Tool {
     public void actionPerformed(ActionEvent e) {
         ((InventoryAppUI) mainContainer).saveGroceryList("inventory");
         JOptionPane.showMessageDialog(null,
-            "Your inventory has been saved.",
-            "Inventory Saved Successfully",
-            JOptionPane.INFORMATION_MESSAGE);
+                "Your inventory has been saved.",
+                "Inventory Saved Successfully",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

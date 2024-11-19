@@ -61,9 +61,10 @@ public class MenuUI extends JPanel {
     private JTable makeTable() {
         String[] header = { "Name", "Category", "Quantity" };
         // String[][] data = { // TODO to delete
-        //     {"test name", "test category", "test quantity"},
-        //     {"test name 2", "test category 2", "test quantity 2"}};
-        //DefaultTableModel model = new DefaultTableModel(data, header); // TODO to delete
+        // {"test name", "test category", "test quantity"},
+        // {"test name 2", "test category 2", "test quantity 2"}};
+        // DefaultTableModel model = new DefaultTableModel(data, header); // TODO to
+        // delete
         DefaultTableModel model = new DefaultTableModel(header, 0);
         JTable table = new JTable(model);
         table.setPreferredScrollableViewportSize(new Dimension(WIDTH, HEIGHT));
@@ -92,7 +93,7 @@ public class MenuUI extends JPanel {
                 }
                 itemQuantity = String.valueOf(itemQuantityInt);
             }
-            String[] row = {itemName, itemCategory, itemQuantity};
+            String[] row = { itemName, itemCategory, itemQuantity };
             ((DefaultTableModel) model).addRow(row);
         }
     }
@@ -101,7 +102,7 @@ public class MenuUI extends JPanel {
     // EFFECTS: constructs panel containing buttons
     private void displayButtons() {
         JPanel toolArea = new JPanel();
-		toolArea.setLayout(new GridLayout(0,1));
+        toolArea.setLayout(new GridLayout(0, 1));
 
         AddTool addTool = new AddTool(this, toolArea);
         IncreaseTool increaseTool = new IncreaseTool(this, toolArea);
@@ -127,8 +128,8 @@ public class MenuUI extends JPanel {
     private JComponent displayWhenListIsEmpty() {
         JComponent panel = new JPanel();
         JLabel text = new JLabel();
-            text.setText("<HTML>You don't have any items in your " + groceryList.getListType()
-                    + ". <br> Start adding items or load a saved list.<HTML>");
+        text.setText("<HTML>You don't have any items in your " + groceryList.getListType()
+                + ". <br> Start adding items or load a saved list.<HTML>");
         panel.add(text);
         return panel;
     }

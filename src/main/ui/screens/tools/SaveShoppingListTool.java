@@ -35,8 +35,8 @@ public class SaveShoppingListTool extends Tool {
     public void actionPerformed(ActionEvent e) {
         ((InventoryAppUI) mainContainer).saveGroceryList("shopping list");
         JOptionPane.showMessageDialog(null,
-            "Your shopping list has been saved.",
-            "Shopping List Saved Successfully",
-            JOptionPane.INFORMATION_MESSAGE);
+                "Your shopping list has been saved.",
+                "Shopping List Saved Successfully",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }

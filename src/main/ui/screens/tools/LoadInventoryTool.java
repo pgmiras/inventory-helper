@@ -40,9 +40,9 @@ public class LoadInventoryTool extends Tool {
     public void actionPerformed(ActionEvent e) {
         ((InventoryAppUI) mainContainer).loadGroceryList("inventory");
         JOptionPane.showMessageDialog(null,
-            "Your inventory has been loaded.",
-            "Inventory Loaded Successfully",
-            JOptionPane.INFORMATION_MESSAGE);
+                "Your inventory has been loaded.",
+                "Inventory Loaded Successfully",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

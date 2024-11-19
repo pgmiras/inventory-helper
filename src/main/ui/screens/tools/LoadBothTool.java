@@ -15,7 +15,8 @@ public class LoadBothTool extends Tool {
         super(mainContainer, parent);
     }
 
-    // EFFECTS: constructs menu to load both grocery lists which is then added to parent
+    // EFFECTS: constructs menu to load both grocery lists which is then added to
+    // parent
     @Override
     protected void createButton(JComponent parent) {
         button = new JMenuItem("Load both");
@@ -36,8 +37,8 @@ public class LoadBothTool extends Tool {
         ((InventoryAppUI) mainContainer).loadGroceryList("inventory");
         ((InventoryAppUI) mainContainer).loadGroceryList("shopping list");
         JOptionPane.showMessageDialog(null,
-            "Your inventory and your shopping list have been loaded.",
-            "Grocery Lists Loaded Successfully",
-            JOptionPane.INFORMATION_MESSAGE);
+                "Your inventory and your shopping list have been loaded.",
+                "Grocery Lists Loaded Successfully",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }
