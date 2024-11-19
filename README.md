@@ -43,3 +43,8 @@ Some example scenarios where this application would be useful:
     - Click on the “Load inventory” menu item to load inventory only.
     - Click on the “Load shopping list” menu item to load shopping list only.
     - Click on the “Load both” menu item to load both inventory and shopping list.
+
+## Image Attributions
+[Save icons created by Freepik](https://www.flaticon.com/free-icon/save_4743125?term=save&page=1&position=29&origin=tag&related_id=4743125) - [Flaticon](https://www.flaticon.com/free-icons/save)
+
+[Folder icons created by stockes_02](https://www.flaticon.com/free-icon/open-file_4847443?related_id=4847443&origin=pack) - [Flaticon](https://www.flaticon.com/free-icons/folder)
