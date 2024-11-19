@@ -40,10 +40,6 @@ public class DecreaseTool extends Tool {
     // then decreases quantity of that item in the grocery list by that amount
     @Override
     public void actionPerformed(ActionEvent e) {
-        // JFrame frame = new JFrame("decrease tool" +
-        // getMenuUI().getGroceryList().getListType()); // TODO to delete
-        // frame.setVisible(true); // TODO to delete
-
         String itemName = JOptionPane.showInputDialog(null,
                 "Which item do you want to decrease? Enter its name:",
                 "Decrease item",
@@ -61,6 +57,10 @@ public class DecreaseTool extends Tool {
         }
         int decreaseQuantity = Integer.parseInt(decreaseQuantityStr);
 
+        updateGroceryList(itemName, decreaseQuantity);
+    }
+
+    private void updateGroceryList(String itemName, int decreaseQuantity) {
         GroceryList groceryList = ((MenuUI) mainContainer).getGroceryList();
         GroceryItem groceryItem = groceryList.getItem(itemName);
         if (groceryList.getListType() == "inventory") {
