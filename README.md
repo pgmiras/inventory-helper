@@ -21,3 +21,25 @@ Some example scenarios where this application would be useful:
 - As a user, I want to be able to remove a grocery item from my shopping list.
 - As a user, I want to be able to save my grocery lists (inventory and shopping list) to file whenever I want.
 - As a user, I want to be able to load my grocery lists (inventory and shopping list) from file whenever I want.
+
+## Instructions for End User
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking on the button “Add new item” under either the inventory panel or the shopping list panel to add new items into that particular list. An option pane will pop up.
+    - Enter the item’s name.
+    - Enter the item’s category.
+    - Enter the item’s quantity.
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking on the button “Increase item” either under the inventory panel or the shopping list panel to increase an item already in that list. An option pane will pop up.
+    - Enter the name of the item you want to increase.
+    - Enter the amount you want to increase to that item’s quantity.
+- Another action related to the user story “adding multiple Xs to a Y” is by clicking on the button “Decrease item” either under the inventory panel or the shopping list panel to decrease an item already in that list. An option pane will pop up.
+    - Enter the name of the item you want to decrease.
+    - Enter the amount you want to decrease from that item’s quantity.
+- You can locate my visual component by clicking either the “Save” or “Load” menu
+- You can save the state of my application by first clicking on “Save” menu, then,
+    - Click on the “Save inventory” menu item to save inventory only.
+    - Click on the “Save shopping list” menu item to save shopping list only.
+    - Click on the “Save both” menu item to save both inventory and shopping list.
+- You can reload the state of my application by first clicking on the “Load” menu, then,
+    - Click on the “Load inventory” menu item to load inventory only.
+    - Click on the “Load shopping list” menu item to load shopping list only.
+    - Click on the “Load both” menu item to load both inventory and shopping list.
