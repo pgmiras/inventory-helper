@@ -65,6 +65,12 @@ public class AddTool extends Tool {
         }
         int itemQuantity = Integer.parseInt(itemQuantityStr);
 
+        updateGroceryList(itemName, itemCategory, itemQuantity);
+    }
+
+    // MODIFIES: grocery list
+    // EFFECTS: adds new item to grocery list with given name, category, and quantity
+    private void updateGroceryList(String itemName, String itemCategory, int itemQuantity) {
         GroceryItem groceryItem = new GroceryItem(itemName, itemCategory);
         GroceryList groceryList = ((MenuUI) mainContainer).getGroceryList();
         if (groceryList.getListType() == "inventory") {
