@@ -8,14 +8,17 @@ import ui.screens.MenuUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Set;
 
 // Used SimpleDrawingPlayer as reference
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
 
 public class IncreaseTool extends Tool {
+    GroceryList groceryList;
 
     public IncreaseTool(MenuUI menu, JComponent parent) {
         super(menu, parent);
+        groceryList = ((MenuUI) mainContainer).getGroceryList();
     }
 
     // MODIFIES: this
@@ -40,20 +43,17 @@ public class IncreaseTool extends Tool {
     // then increases quantity of that item in the grocery list by that amount
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        String itemName = JOptionPane.showInputDialog(null,
-                "Which item do you want to increase? Enter its name:",
-                "Increase item",
-                JOptionPane.QUESTION_MESSAGE);
-        if (itemName == null) {
+        if (doNotContinue("start", "")) {
             return;
         }
 
-        String increaseQuantityStr = JOptionPane.showInputDialog(null,
-                "By how many?",
-                "Increase item",
-                JOptionPane.QUESTION_MESSAGE);
-        if (increaseQuantityStr == null) {
+        String itemName = showOptionPane("Which item do you want to increase? Enter its name:");
+        if (doNotContinue("itemName", itemName)) {
+            return;
+        }
+
+        String increaseQuantityStr = showOptionPane("By how many?");
+        if (doNotContinue("itemQuantity", increaseQuantityStr)) {
             return;
         }
         int increaseQuantity = Integer.parseInt(increaseQuantityStr);
@@ -66,6 +66,79 @@ public class IncreaseTool extends Tool {
             groceryItem.increaseQuantityInShoppingList(increaseQuantity);
         }
         ((MenuUI) mainContainer).update();
+    }
+
+    // EFFECTS: checks if method should not continue at the given point, with given
+    // input
+    private boolean doNotContinue(String point, String input) {
+        boolean doNotContinue = false;
+        switch (point) {
+            case "start":
+                doNotContinue = emptyGroceryList();
+                break;
+            case "itemName":
+                doNotContinue = invalidItemName(input);
+                break;
+            case "itemQuantity":
+                doNotContinue = invalidItemQuantity(input);
+                break;
+        }
+        return doNotContinue;
+    }
+
+    // EFFECTS: checks if the grocery list is empty
+    private boolean emptyGroceryList() {
+        boolean emptyGroceryList = false;
+        if (groceryList.getGroceryList().isEmpty()) {
+            emptyGroceryList = true;
+            JOptionPane.showMessageDialog(null,
+                    "Your " + groceryList.getListType() + " is empty.",
+                    "Could Not Perform Action",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return emptyGroceryList;
+    }
+
+    // EFFECTS: checks if given item name is valid
+    private boolean invalidItemName(String itemName) {
+        Set<GroceryItem> groceryListList = groceryList.getGroceryList();
+        GroceryItem groceryItem = groceryList.getItem(itemName);
+        boolean doNotContinue = false;
+        if (!groceryListList.contains(groceryItem)) {
+            doNotContinue = true;
+            JOptionPane.showMessageDialog(null,
+                    "You do not have " + itemName + " in your " + groceryList.getListType(),
+                    "Could Not Perform Action",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        if (itemName == null) {
+            doNotContinue = true;
+        }
+        return doNotContinue;
+    }
+
+    // EFFECTS: checks if given item quantity is valid
+    private boolean invalidItemQuantity(String input) {
+        boolean doNotContinue = false;
+        if (input == null) {
+            doNotContinue = true;
+        }
+        if (Integer.parseInt(input) < 0) {
+            doNotContinue = true;
+            JOptionPane.showMessageDialog(null,
+                    "You entered a negative value",
+                    "Could Not Perform Action",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return doNotContinue;
+    }
+    
+    // EFFECTS: creates JOptionPane with given message
+    private String showOptionPane(String message) {
+        return JOptionPane.showInputDialog(null,
+                message,
+                "Increase item",
+                JOptionPane.QUESTION_MESSAGE);
     }
 
 }
