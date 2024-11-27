@@ -3,10 +3,13 @@ package ui.screens;
 import javax.swing.*;
 
 import model.*;
+import model.Event;
 import persistence.*;
 import ui.screens.tools.*;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -20,7 +23,7 @@ import java.io.IOException;
 // Repository URL: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Starter
 
 // Represents application's main window frame
-public class InventoryAppUI extends JFrame {
+public class InventoryAppUI extends JFrame implements WindowListener {
     private static final int WIDTH = 750;
     private static final int HEIGHT = 500;
 
@@ -51,6 +54,8 @@ public class InventoryAppUI extends JFrame {
         inventory = new InventoryList();
         shoppingList = new ShoppingList();
 
+        addWindowListener(this);
+
         initializeGraphics();
     }
 
@@ -62,7 +67,7 @@ public class InventoryAppUI extends JFrame {
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         displayMenuBar();
@@ -178,5 +183,37 @@ public class InventoryAppUI extends JFrame {
 
     public int getUserInterfaceHeight() {
         return HEIGHT;
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        for (Event next : EventLog.getInstance()) {
+            String msg = next.getDate() + ": " + next.getDescription();
+            System.out.println(msg);
+        }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 }

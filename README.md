@@ -44,6 +44,16 @@ Some example scenarios where this application would be useful:
     - Click on the “Load shopping list” menu item to load shopping list only.
     - Click on the “Load both” menu item to load both inventory and shopping list.
 
+## Phase 4: Task 2
+- GroceryItem
+    - Increased `item name` in inventory by `amount`.
+    - Decreased `item name` in inventory by `amount`.
+    - Increased `item name` in shopping list by `amount`.
+    - Decreased `item name` in shopping list by `amount`.
+- GroceryList
+    - Added `item name` (`item category`) to `inventory/shopping list`.
+    - Removed `item name` (`item category`) from `inventory/shopping list`.
+
 ## Image Attributions
 [Save icons created by Freepik](https://www.flaticon.com/free-icon/save_4743125?term=save&page=1&position=29&origin=tag&related_id=4743125) - [Flaticon](https://www.flaticon.com/free-icons/save)
 
