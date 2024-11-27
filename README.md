@@ -54,6 +54,12 @@ Some example scenarios where this application would be useful:
     - Added `item name` (`item category`) to `inventory/shopping list`.
     - Removed `item name` (`item category`) from `inventory/shopping list`.
 
+## Phase 4: Task 3
+
+One refactoring I might do is to implement the Observer Pattern design. The Observable/Subject will be `GroceryList`, and its Observer will be `MenuUI`. For every time a `GroceryItem` is added to or removed from the `GroceryList`, or its quantity in that `GroceryList` is modified (increased or decreased), `MenuUI` will be notified and updated accordingly. Specifically, `MenuUI` will update by displaying a table with the correct set of grocery items with the correct name, category, and quantity. There already is an `update` method implemented in my `MenuUI` class, so I just need to create an `Observer` interface specifying an `update` method and have `MenuUI` implement this interface. I will then create an `Observable` class which `GroceryList` would then have to extend. This `Observable` class will have the `addObserver`, `removeObserver`, and `notifyObserver` methods. After the two `GroceryList` classes and two `MenuUI` classes are instantiated in `InventoryAppUI`, these two `MenuUI` classes will be added as observers to the two `GroceryList` classes respectively.
+
+Doing this could remove the direct association between `MenuUI` and `GroceryList`, and decrease the coupling between the model and user interface (UI). This is so that the point of access between the model and the UI is the association between `GroceryList` and `InventoryAppUI`, and so that `MenuUI` will have to depend on `InventoryAppUI` only rather than on both `InventoryAppUI` and `GroceryList`.
+
 ## Image Attributions
 [Save icons created by Freepik](https://www.flaticon.com/free-icon/save_4743125?term=save&page=1&position=29&origin=tag&related_id=4743125) - [Flaticon](https://www.flaticon.com/free-icons/save)
 
