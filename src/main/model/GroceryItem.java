@@ -41,6 +41,9 @@ public class GroceryItem implements Writable {
     // EFFECTS: increases grocery item's quantity in inventory by given amount
     public void increaseQuantityInInventory(int amount) {
         quantityInInventory += amount;
+        String desc = "Increased " + name + " in inventory by " + amount + ".";
+        EventLog.getInstance().logEvent(new Event(desc));
+
     }
 
     // REQUIRES: given grocery item is already in user's list, and
@@ -49,6 +52,8 @@ public class GroceryItem implements Writable {
     // EFFECTS: decreases grocery item's quantity in inventory by given amount;
     public void decreaseQuantityInInventory(int amount) {
         quantityInInventory -= amount;
+        String desc = "Decreased " + name + " in inventory by " + amount + ".";
+        EventLog.getInstance().logEvent(new Event(desc));
     }
 
     // REQUIRES: given grocery item is already in user's shopping list, amount > 0
@@ -56,6 +61,8 @@ public class GroceryItem implements Writable {
     // EFFECTS: increases grocery item's quantity in shopping list by given amount
     public void increaseQuantityInShoppingList(int amount) {
         quantityInShoppingList += amount;
+        String desc = "Increased " + name + " in shopping list by " + amount + ".";
+        EventLog.getInstance().logEvent(new Event(desc));
     }
 
     // REQUIRES: given grocery item is already in user's shopping list, and
@@ -64,6 +71,8 @@ public class GroceryItem implements Writable {
     // EFFECTS: decreases grocery item's quantity in shopping by given amount
     public void decreaseQuantityInShoppingList(int amount) {
         quantityInShoppingList -= amount;
+        String desc = "Decreased " + name + " in shopping list by " + amount + ".";
+        EventLog.getInstance().logEvent(new Event(desc));
     }
 
     // EFFECTS: indicates if grocery item is contained in inventory list
