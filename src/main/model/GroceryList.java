@@ -24,6 +24,8 @@ public class GroceryList implements Writable {
     // EFFECTS: adds given grocery item into inventory list
     public void addItem(GroceryItem groceryItem) {
         groceryList.add(groceryItem);
+        String desc = "Added " + groceryItem.getName() + "(" + groceryItem.getCategory() + ")" + " to " + listType;
+        EventLog.getInstance().logEvent(new Event(desc));
     }
 
     // REQUIRES: given grocery item is already in the list
@@ -31,6 +33,8 @@ public class GroceryList implements Writable {
     // EFFECTS: removes given grocery item from inventory list
     public void removeItem(GroceryItem groceryItem) {
         groceryList.remove(groceryItem);
+        String desc = "Removed " + groceryItem.getName() + "(" + groceryItem.getCategory() + ")" + " from " + listType;
+        EventLog.getInstance().logEvent(new Event(desc));
     }
 
     // REQUIRES: given name is the name of an item that exists in the list
